@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="so" class="scroll-smooth">
 <head>
@@ -19,8 +18,8 @@
                         brand: {
                             dark: '#030305',
                             light: '#f8fafc',
-                            accent: '#6366f1', // Indigo
-                            glow: '#a855f7',   // Purple
+                            accent: '#6366f1', 
+                            glow: '#a855f7',   
                             teal: '#0d9488',
                             danger: '#ef4444'
                         }
@@ -28,9 +27,11 @@
                     animation: { 
                         'fade-in': 'fadeIn 0.6s ease-out forwards',
                         'blob': 'blob 10s infinite',
+                        'pop-up': 'popUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
                     },
                     keyframes: { 
                         fadeIn: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        popUp: { '0%': { opacity: '0', transform: 'scale(0.95)' }, '100%': { opacity: '1', transform: 'scale(1)' } },
                         blob: {
                             "0%": { transform: "translate(0px, 0px) scale(1)" },
                             "33%": { transform: "translate(30px, -50px) scale(1.1)" },
@@ -130,6 +131,72 @@
         <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-glow/5 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000"></div>
     </div>
 
+    <div id="shareModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm transition-all duration-300 opacity-0">
+        <div class="relative w-full max-w-lg mx-4 bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-white/10 overflow-hidden transform scale-95 transition-all duration-300" id="shareContent">
+            
+            <div class="relative bg-gradient-to-r from-brand-accent to-brand-glow p-6 text-white text-center">
+                <button onclick="closeShareModal()" class="absolute top-4 right-4 text-white/70 hover:text-white hover:bg-white/10 rounded-full w-8 h-8 flex items-center justify-center transition-all">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+                <div class="w-16 h-16 mx-auto bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-3xl mb-3 border border-white/20">
+                    <i class="fa-solid fa-bullhorn text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold">Faafi Khayrka</h3>
+                <p class="text-white/90 text-sm mt-1">La wadaag asxaabtaada si aqoontu u gaadho cid kasta.</p>
+            </div>
+
+            <div class="p-8">
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    <button onclick="shareToSocial('whatsapp')" class="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 hover:bg-[#25D366]/10 hover:border-[#25D366] transition-all duration-300">
+                        <div class="w-12 h-12 rounded-full bg-[#25D366] text-white flex items-center justify-center text-xl shadow-lg shadow-[#25D366]/30 group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <span class="font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-[#25D366]">WhatsApp</span>
+                    </button>
+
+                    <button onclick="shareToSocial('facebook')" class="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 hover:bg-[#1877F2]/10 hover:border-[#1877F2] transition-all duration-300">
+                        <div class="w-12 h-12 rounded-full bg-[#1877F2] text-white flex items-center justify-center text-xl shadow-lg shadow-[#1877F2]/30 group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </div>
+                        <span class="font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-[#1877F2]">Facebook</span>
+                    </button>
+
+                    <button onclick="shareToSocial('twitter')" class="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 hover:bg-black/10 dark:hover:bg-white/10 hover:border-black dark:hover:border-white transition-all duration-300">
+                        <div class="w-12 h-12 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center text-xl shadow-lg shadow-black/30 group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </div>
+                        <span class="font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-black dark:group-hover:text-white">X / Twitter</span>
+                    </button>
+
+                    <button onclick="shareToSocial('linkedin')" class="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 hover:bg-[#0A66C2]/10 hover:border-[#0A66C2] transition-all duration-300">
+                        <div class="w-12 h-12 rounded-full bg-[#0A66C2] text-white flex items-center justify-center text-xl shadow-lg shadow-[#0A66C2]/30 group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </div>
+                        <span class="font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-[#0A66C2]">LinkedIn</span>
+                    </button>
+
+                    <button onclick="shareToSocial('telegram')" class="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 hover:bg-[#229ED9]/10 hover:border-[#229ED9] transition-all duration-300">
+                        <div class="w-12 h-12 rounded-full bg-[#229ED9] text-white flex items-center justify-center text-xl shadow-lg shadow-[#229ED9]/30 group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-telegram"></i>
+                        </div>
+                        <span class="font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-[#229ED9]">Telegram</span>
+                    </button>
+
+                    <button onclick="copyLinkWithText()" class="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 hover:bg-brand-accent/10 hover:border-brand-accent transition-all duration-300">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-brand-accent to-brand-glow text-white flex items-center justify-center text-xl shadow-lg shadow-brand-accent/30 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-copy"></i>
+                        </div>
+                        <span class="font-bold text-sm text-slate-700 dark:text-slate-300 group-hover:text-brand-accent" id="copyText">Copy Link</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="bg-slate-50 dark:bg-black/20 p-4 text-center border-t border-slate-200 dark:border-white/5">
+                <p class="text-xs text-slate-500">Mahadsanid! Waad ku mahadsantahay garab istaaggaaga.</p>
+            </div>
+        </div>
+    </div>
+
     <nav class="fixed w-full z-50 glass top-0 transition-all duration-300">
         <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-3 text-slate-600 dark:text-slate-300 hover:text-brand-accent dark:hover:text-white transition-colors group">
@@ -140,7 +207,7 @@
             </a>
             
             <div class="flex items-center gap-3">
-                <button onclick="shareSurvey()" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 hover:bg-brand-accent hover:text-white transition-colors flex items-center justify-center text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10">
+                <button onclick="openShareModal()" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-white/5 hover:bg-brand-accent hover:text-white transition-colors flex items-center justify-center text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-white/10">
                     <i class="fa-solid fa-share-nodes"></i>
                 </button>
 
@@ -531,7 +598,7 @@
         const translations = {
             en: {
                 mainHeading: "Building the Bridge of Knowledge",
-                subHeading: "Dear Reader, we are building a modern App to connect the Somali community with millions of international and local books. Our goal is to put knowledge at your fingertips. Your opinion is the blueprint for this project. Please share your thoughts to help us build this together.",
+                subHeading: "Sir/Madam, we are building a modern App to connect the Somali community with millions of international and local books. Our goal is to put knowledge at your fingertips. Your opinion is the blueprint for this project. Please share your thoughts to help us build this together.",
                 sec1Title: "Personal Info",
                 labelName: "Your Name",
                 labelCity: "City",
@@ -558,7 +625,7 @@
             },
             so: {
                 mainHeading: "Dhisida Buundada Aqoonta",
-                subHeading: "Gacaliye, waxaan dhisaynaa App casri ah oo bulshada Soomaaliyeed u sahlaya helitaanka malaayiin buug oo caalami iyo maxalli ah. Hadafkayagu waa inaan aqoonta ka dhigno mid fartaada ku jirta. Laakiin si aan u samayno aalad ku anfacda, aragtidaada ayaa muhiim u ah mashruucan. Fadlan nala wadaag taladaada si aan tallaabadan u qaadno annagoo wadajir ah.",
+                subHeading: "Mudane/Marwo, waxaan dhisaynaa App casri ah oo bulshada Soomaaliyeed u sahlaya helitaanka malaayiin buug oo caalami iyo maxalli ah. Hadafkayagu waa inaan aqoonta ka dhigno mid fartaada ku jirta. Laakiin si aan u samayno aalad ku anfacda, aragtidaada ayaa muhiim u ah mashruucan. Fadlan nala wadaag taladaada si aan tallaabadan u qaadno annagoo wadajir ah.",
                 sec1Title: "Macluumaadkaaga",
                 labelName: "Magacaaga",
                 labelCity: "Magaalada",
@@ -599,21 +666,82 @@
             });
         }
 
-        // --- SHARE LOGIC ---
-        window.shareSurvey = async () => {
-            if (navigator.share) {
-                try {
-                    await navigator.share({
-                        title: 'Sahanka Bulshada | Hiigsi Tech',
-                        text: 'Fadlan ka qayb qaado sahankan muhiimka ah ee lagu dhisayo App-ka aqoonta.',
-                        url: window.location.href,
-                    });
-                } catch (err) {
-                    console.log('Error sharing:', err);
-                }
-            } else {
-                alert('Link copied to clipboard!');
-                navigator.clipboard.writeText(window.location.href);
+        // --- ADVANCED SHARE MODAL LOGIC ---
+        const modal = document.getElementById('shareModal');
+        const modalContent = document.getElementById('shareContent');
+
+        window.openShareModal = () => {
+            modal.classList.remove('hidden');
+            // Trigger reflow
+            void modal.offsetWidth;
+            modal.classList.remove('opacity-0');
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+        }
+
+        window.closeShareModal = () => {
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Close when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) window.closeShareModal();
+        });
+
+        // --- MARKETING COPYWRITING CODES ---
+        const pageUrl = window.location.href;
+        
+        // 70+ Words of Persuasive Somali Marketing Copy
+        const marketingCopy = `Walaalayaal, waxaan idinla wadaagayaa fursad dahabi ah oo aan ku dhisayno mustaqbalka aqoonta dadkeena. Hiigsi Tech waxay wadaa mashruuc casri ah oo maktabad digitaal ah loogu samaynayo bulshada Soomaaliyeed, si loo helo malaayiin buug oo bilaash ah. Tani maaha kaliya App, waa kacaan aqooneed oo u baahan inaan u wada istaagno. Laakiin si loo guulaysto, codkaagu waa muhiim. Fadlan nala wadaag taladaada adigoo buuxinaya sahankan gaaban. Aan wadajir u dhisno buundada aqoonta ee jiilka maanta iyo kan berri. Halkan ka qaybgal: `;
+
+        window.shareToSocial = (platform) => {
+            let url = '';
+            const text = encodeURIComponent(marketingCopy);
+            const link = encodeURIComponent(pageUrl);
+
+            switch(platform) {
+                case 'whatsapp':
+                    url = `https://wa.me/?text=${text}%20${link}`;
+                    break;
+                case 'facebook':
+                    // FB API limits pre-filled text, but we try via sharer
+                    url = `https://www.facebook.com/sharer/sharer.php?u=${link}&quote=${text}`;
+                    break;
+                case 'twitter':
+                    // Twitter has char limit, so we use a shorter punchy version + link
+                    const twitterText = encodeURIComponent("Walaalayaal, ka qayb qaata dhismaha maktabadda casriga ah ee Hiigsi Tech. Codkaagu waa muhiim! #HiigsiTech #SomaliBooks");
+                    url = `https://twitter.com/intent/tweet?text=${twitterText}&url=${link}`;
+                    break;
+                case 'linkedin':
+                    url = `https://www.linkedin.com/shareArticle?mini=true&url=${link}&title=${encodeURIComponent('Hiigsi Tech Library Survey')}&summary=${text}`;
+                    break;
+                case 'telegram':
+                    url = `https://t.me/share/url?url=${link}&text=${text}`;
+                    break;
+            }
+            window.open(url, '_blank');
+        }
+
+        window.copyLinkWithText = async () => {
+            const fullText = marketingCopy + " " + pageUrl;
+            try {
+                await navigator.clipboard.writeText(fullText);
+                const btnSpan = document.getElementById('copyText');
+                const originalText = btnSpan.innerText;
+                btnSpan.innerText = "Copied!";
+                btnSpan.classList.add('text-brand-accent');
+                
+                setTimeout(() => {
+                    btnSpan.innerText = originalText;
+                    btnSpan.classList.remove('text-brand-accent');
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy', err);
             }
         }
 
