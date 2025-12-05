@@ -697,11 +697,24 @@
         // --- MARKETING COPYWRITING CODES ---
         const pageUrl = window.location.href;
         
-        // 70+ Words of Persuasive Somali Marketing Copy
-        const marketingCopy = `Walaalayaal, waxaan idinla wadaagayaa fursad dahabi ah oo aan ku dhisayno mustaqbalka aqoonta dadkeena. Hiigsi Tech waxay wadaa mashruuc casri ah oo maktabad digitaal ah loogu samaynayo bulshada Soomaaliyeed, si loo helo malaayiin buug oo bilaash ah. Tani maaha kaliya App, waa kacaan aqooneed oo u baahan inaan u wada istaagno. Laakiin si loo guulaysto, codkaagu waa muhiim. Fadlan nala wadaag taladaada adigoo buuxinaya sahankan gaaban. Aan wadajir u dhisno buundada aqoonta ee jiilka maanta iyo kan berri. Halkan ka qaybgal: `;
+        // UPDATED: Emojis, Newlines (Enter), and Bold Stars **
+        const marketingCopy = `👋 *Asalaamu Calaykum Walaalayaal!*
+
+✨ Waxaan idinla wadaagayaa fursad dahabi ah oo aan ku dhisayno mustaqbalka aqoonta dadkeena.
+
+📚 *Hiigsi Tech* waxay wadaa mashruuc casri ah oo *Maktabad Digitaal ah* loogu samaynayo bulshada Soomaaliyeed.
+
+🚀 Hadafku waa in la helo *Malaayiin Buug oo Bilaash ah!*
+
+💡 Tani maaha kaliya App, waa kacaan aqooneed. Laakiin si loo guulaysto, *Codkaagu waa muhiim.*
+
+🙏 Fadlan nala wadaag taladaada adigoo buuxinaya sahankan gaaban:
+
+👇 *Halkan ka qaybgal:*`;
 
         window.shareToSocial = (platform) => {
             let url = '';
+            // encodeURIComponent preserves the newlines/emojis correctly for URL
             const text = encodeURIComponent(marketingCopy);
             const link = encodeURIComponent(pageUrl);
 
@@ -710,12 +723,11 @@
                     url = `https://wa.me/?text=${text}%20${link}`;
                     break;
                 case 'facebook':
-                    // FB API limits pre-filled text, but we try via sharer
                     url = `https://www.facebook.com/sharer/sharer.php?u=${link}&quote=${text}`;
                     break;
                 case 'twitter':
-                    // Twitter has char limit, so we use a shorter punchy version + link
-                    const twitterText = encodeURIComponent("Walaalayaal, ka qayb qaata dhismaha maktabadda casriga ah ee Hiigsi Tech. Codkaagu waa muhiim! #HiigsiTech #SomaliBooks");
+                    // Short version for Twitter limit
+                    const twitterText = encodeURIComponent("Walaalayaal, ka qayb qaata dhismaha maktabadda casriga ah ee Hiigsi Tech. Codkaagu waa muhiim! 📚✨ #HiigsiTech #SomaliBooks");
                     url = `https://twitter.com/intent/tweet?text=${twitterText}&url=${link}`;
                     break;
                 case 'linkedin':
@@ -729,7 +741,7 @@
         }
 
         window.copyLinkWithText = async () => {
-            const fullText = marketingCopy + " " + pageUrl;
+            const fullText = marketingCopy + "\n\n" + pageUrl;
             try {
                 await navigator.clipboard.writeText(fullText);
                 const btnSpan = document.getElementById('copyText');
@@ -840,7 +852,7 @@
                 btn.classList.add('bg-green-500');
                 btnText.innerHTML = '<i class="fa-solid fa-check text-xl"></i> Waa la diray!';
                 
-                setTimeout(() => { window.location.href = 'index.html'; }, 1500);
+                setTimeout(() => { window.location.href = '/'; }, 1500);
                 
             } catch(err) {
                 alert("Error: " + err.message);
@@ -849,6 +861,19 @@
                 btn.disabled = false;
             }
         });
+
+        // --- BACK BUTTON INTERCEPTION LOGIC ---
+        // This adds a "fake" history entry. When the user swipes back, they are "popping"
+        // this fake entry, triggering the event which redirects them to home.
+        window.addEventListener('load', function() {
+            history.pushState(null, null, window.location.href);
+        });
+
+        window.addEventListener('popstate', function(event) {
+            // When user clicks browser/phone back button, go to root "/"
+            window.location.href = "/";
+        });
+
     </script>
 </body>
 </html>
