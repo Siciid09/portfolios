@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mubarik Osman | Command Center</title>
+    <title>Mubarik Osman | Admin Command Center</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -13,14 +12,14 @@
             darkMode: 'class',
             theme: {
                 extend: { 
-                    colors: { 
-                        brand: { 
-                            dark: '#0f172a', 
-                            accent: '#4f46e5', 
-                            accentHover: '#4338ca',
+                     colors: { 
+                         brand: { 
+                             dark: '#0f172a', 
+                             accent: '#4f46e5',
+                             accentHover: '#4338ca',
                             light: '#f8fafc'
                         } 
-                    },
+                     },
                     fontFamily: { sans: ['Outfit', 'sans-serif'] }
                 }
             }
@@ -35,28 +34,28 @@
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
         .input-std { 
-            width: 100%; 
-            padding: 0.75rem 1rem; 
-            border-radius: 0.5rem; 
-            border: 1px solid #e2e8f0; 
-            background-color: #fff; 
-            font-size: 0.875rem; 
-            outline: none; 
-            transition: all 0.2s; 
-        }
+             width: 100%; 
+             padding: 0.75rem 1rem; 
+             border-radius: 0.5rem; 
+             border: 1px solid #e2e8f0; 
+             background-color: #fff; 
+             font-size: 0.875rem; 
+             outline: none; 
+             transition: all 0.2s; 
+         }
         .input-std:focus { 
-            border-color: #4f46e5; 
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); 
-        }
+             border-color: #4f46e5; 
+             box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); 
+         }
         
         .btn-primary { 
-            background-color: #4f46e5; 
-            color: white; 
-            padding: 0.75rem 1.5rem; 
-            border-radius: 0.5rem; 
-            font-weight: 600; 
-            transition: all 0.2s; 
-            display: inline-flex;
+             background-color: #4f46e5; 
+             color: white; 
+             padding: 0.75rem 1.5rem; 
+             border-radius: 0.5rem; 
+             font-weight: 600; 
+             transition: all 0.2s; 
+             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
@@ -111,44 +110,30 @@
                     <i class="fa-solid fa-gauge-high w-6 text-center"></i> Overview
                 </button>
 
+                <p class="px-4 text-xs font-bold text-slate-600 uppercase tracking-wider mt-6 mb-2">Inbox & Data</p>
+
+                <button onclick="switchTab('bookings')" class="nav-btn w-full text-left px-4 py-3 rounded-lg hover:bg-white/5 hover:text-white flex items-center gap-3">
+                    <i class="fa-solid fa-calendar-check w-6 text-center"></i> Bookings
+                </button>
+                
+                <button onclick="switchTab('inbox')" class="nav-btn w-full text-left px-4 py-3 rounded-lg hover:bg-white/5 hover:text-white flex items-center gap-3">
+                    <i class="fa-solid fa-inbox w-6 text-center"></i> Messages
+                </button>
+
                 <p class="px-4 text-xs font-bold text-slate-600 uppercase tracking-wider mt-6 mb-2">Content Management</p>
                 
-                <button onclick="switchTab('profile')" class="nav-btn w-full text-left px-4 py-3 rounded-lg hover:bg-white/5 hover:text-white flex items-center gap-3">
-                    <i class="fa-solid fa-user w-6 text-center"></i> Profile & Bio
-                </button>
                 <button onclick="switchTab('projects')" class="nav-btn w-full text-left px-4 py-3 rounded-lg hover:bg-white/5 hover:text-white flex items-center gap-3">
                     <i class="fa-solid fa-briefcase w-6 text-center"></i> Projects
                 </button>
                 <button onclick="switchTab('certificates')" class="nav-btn w-full text-left px-4 py-3 rounded-lg hover:bg-white/5 hover:text-white flex items-center gap-3">
                     <i class="fa-solid fa-certificate w-6 text-center"></i> Certificates
                 </button>
-                <button onclick="switchTab('services')" class="nav-btn w-full text-left px-4 py-3 rounded-lg hover:bg-white/5 hover:text-white flex items-center gap-3">
-                    <i class="fa-solid fa-layer-group w-6 text-center"></i> Services
-                </button>
-                <button onclick="switchTab('experience')" class="nav-btn w-full text-left px-4 py-3 rounded-lg hover:bg-white/5 hover:text-white flex items-center gap-3">
-                    <i class="fa-solid fa-road w-6 text-center"></i> Experience
-                </button>
                 <button onclick="switchTab('stats')" class="nav-btn w-full text-left px-4 py-3 rounded-lg hover:bg-white/5 hover:text-white flex items-center gap-3">
                     <i class="fa-solid fa-arrow-trend-up w-6 text-center"></i> Site Counters
-                </button>
-
-                <p class="px-4 text-xs font-bold text-slate-600 uppercase tracking-wider mt-6 mb-2">Inbox & Data</p>
-
-                <button onclick="switchTab('inbox')" class="nav-btn w-full text-left px-4 py-3 rounded-lg hover:bg-white/5 hover:text-white flex items-center gap-3">
-                    <i class="fa-solid fa-inbox w-6 text-center"></i> Messages
-                </button>
-                <button onclick="switchTab('bookings')" class="nav-btn w-full text-left px-4 py-3 rounded-lg hover:bg-white/5 hover:text-white flex items-center gap-3">
-                    <i class="fa-solid fa-calendar-check w-6 text-center"></i> Bookings
-                </button>
-                <button onclick="switchTab('skills')" class="nav-btn w-full text-left px-4 py-3 rounded-lg hover:bg-white/5 hover:text-white flex items-center gap-3">
-                    <i class="fa-solid fa-bolt w-6 text-center"></i> Skills
                 </button>
             </nav>
             
             <div class="p-4 border-t border-white/10 bg-black/20 space-y-2">
-                <a href="index.html" target="_blank" class="w-full bg-white/10 hover:bg-white/20 text-white p-2 rounded-lg flex items-center justify-center gap-2 transition-colors text-sm font-bold">
-                    View Live Site <i class="fa-solid fa-external-link-alt"></i>
-                </a>
                 <button onclick="handleLogout()" class="w-full text-red-400 hover:text-red-300 hover:bg-red-500/10 p-2 rounded-lg flex items-center justify-center gap-2 transition-colors text-sm font-bold">
                     Sign Out <i class="fa-solid fa-right-from-bracket"></i>
                 </button>
@@ -163,7 +148,6 @@
                 </div>
                 <div class="flex items-center gap-4">
                     <span id="current-date" class="text-sm font-mono text-slate-500 bg-slate-100 px-3 py-1 rounded"></span>
-                    <div class="w-10 h-10 rounded-full bg-brand-accent text-white flex items-center justify-center font-bold">A</div>
                 </div>
             </header>
 
@@ -171,13 +155,6 @@
 
                 <div id="tab-overview" class="tab-content">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                        <div class="glass-card p-6 flex items-center gap-4 border-l-4 border-brand-accent">
-                            <div class="w-12 h-12 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl"><i class="fa-solid fa-envelope"></i></div>
-                            <div>
-                                <p class="text-xs font-bold text-slate-400 uppercase">Total Messages</p>
-                                <h3 class="text-2xl font-black text-slate-800" id="stat-msgs">-</h3>
-                            </div>
-                        </div>
                         <div class="glass-card p-6 flex items-center gap-4 border-l-4 border-teal-500">
                             <div class="w-12 h-12 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center text-xl"><i class="fa-solid fa-calendar-check"></i></div>
                             <div>
@@ -185,162 +162,37 @@
                                 <h3 class="text-2xl font-black text-slate-800" id="stat-bookings">-</h3>
                             </div>
                         </div>
-                        <div class="glass-card p-6 flex items-center gap-4 border-l-4 border-purple-500">
-                            <div class="w-12 h-12 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center text-xl"><i class="fa-solid fa-briefcase"></i></div>
+                        <div class="glass-card p-6 flex items-center gap-4 border-l-4 border-brand-accent">
+                            <div class="w-12 h-12 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl"><i class="fa-solid fa-envelope"></i></div>
                             <div>
-                                <p class="text-xs font-bold text-slate-400 uppercase">Projects Live</p>
-                                <h3 class="text-2xl font-black text-slate-800" id="stat-projects">-</h3>
-                            </div>
-                        </div>
-                        <div class="glass-card p-6 flex items-center gap-4 border-l-4 border-orange-500">
-                            <div class="w-12 h-12 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center text-xl"><i class="fa-solid fa-eye"></i></div>
-                            <div>
-                                <p class="text-xs font-bold text-slate-400 uppercase">Total Interactions</p>
-                                <h3 class="text-2xl font-black text-slate-800" id="stat-interactions">-</h3>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <div class="glass-card p-6">
-                            <h3 class="font-bold text-lg mb-4">Recent Activity</h3>
-                            <div id="recent-activity-list" class="space-y-4"></div>
-                        </div>
-                        <div class="glass-card p-6 bg-brand-dark text-white relative overflow-hidden">
-                            <div class="relative z-10">
-                                <h3 class="font-bold text-xl mb-2">Quick Actions</h3>
-                                <div class="space-y-3 mt-4">
-                                    <button onclick="switchTab('projects')" class="w-full text-left p-3 rounded bg-white/10 hover:bg-white/20 transition-colors flex items-center gap-3">
-                                        <i class="fa-solid fa-plus"></i> Add New Project
-                                    </button>
-                                    <button onclick="switchTab('inbox')" class="w-full text-left p-3 rounded bg-white/10 hover:bg-white/20 transition-colors flex items-center gap-3">
-                                        <i class="fa-solid fa-envelope-open-text"></i> Check Unread Messages
-                                    </button>
-                                </div>
+                                <p class="text-xs font-bold text-slate-400 uppercase">Total Messages</p>
+                                <h3 class="text-2xl font-black text-slate-800" id="stat-msgs">-</h3>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div id="tab-profile" class="tab-content hidden">
-                    <div class="glass-card p-8 max-w-4xl">
-                        <h2 class="text-xl font-bold mb-6 border-b pb-4">Personal Brand & Hero</h2>
-                        <form onsubmit="handleProfileSave(event)" class="space-y-6">
-                            <div class="flex flex-col md:flex-row gap-8">
-                                <div class="w-40 h-40 bg-slate-200 rounded-full overflow-hidden flex-shrink-0 border-4 border-white shadow-lg relative group">
-                                    <img id="preview-hero" src="https://via.placeholder.com/150" class="w-full h-full object-cover">
-                                    <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <span class="text-white text-xs font-bold">Preview</span>
-                                    </div>
-                                </div>
-                                <div class="flex-1 space-y-4">
-                                    <div>
-                                        <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Upload New Photo</label>
-                                        <input type="file" id="profile-file" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-brand-accent file:text-white hover:file:bg-brand-accentHover cursor-pointer border border-slate-200 rounded-lg p-2" accept="image/*">
-                                    </div>
-                                    <div>
-                                        <label class="block text-xs font-bold text-slate-500 uppercase mb-1">OR Image URL</label>
-                                        <input type="text" id="profile-url" name="img" placeholder="https://..." class="input-std">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-sm font-bold text-slate-700 mb-2">Full Name</label>
-                                    <input type="text" id="profile-name" name="name" class="input-std" placeholder="Mubarik Osman">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-bold text-slate-700 mb-2">Titles (Comma Separated)</label>
-                                    <input type="text" id="profile-titles" name="titles" class="input-std" placeholder="Engineer, Strategist, Designer">
-                                </div>
-                                <div class="md:col-span-2">
-                                    <label class="block text-sm font-bold text-slate-700 mb-2">Bio</label>
-                                    <textarea id="profile-bio" name="bio" class="input-std h-32 resize-none" placeholder="Your story..."></textarea>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn-primary w-full md:w-auto">Save Profile</button>
-                        </form>
-                    </div>
-                </div>
-
-                <div id="tab-projects" class="tab-content hidden">
-                    <div class="glass-card p-6 mb-8">
-                        <h3 class="font-bold text-lg mb-4">Add New Project</h3>
-                        <form onsubmit="handleCreate(event, 'projects')" class="grid grid-cols-1 md:grid-cols-12 gap-4">
-                            <div class="md:col-span-6">
-                                <input type="text" name="title" placeholder="Project Title" class="input-std" required>
-                            </div>
-                            <div class="md:col-span-3">
-                                <input type="text" name="type" placeholder="Type (e.g. SaaS)" class="input-std" required>
-                            </div>
-                            <div class="md:col-span-3">
-                                <input type="text" name="projectLink" placeholder="External URL (https://...)" class="input-std">
-                            </div>
-                            
-                            <div class="md:col-span-6 bg-slate-50 p-3 rounded border">
-                                <label class="text-xs font-bold text-slate-500 uppercase">Image Upload</label>
-                                <input type="file" id="project-file" class="w-full mt-1 text-sm">
-                            </div>
-                            <div class="md:col-span-6 bg-slate-50 p-3 rounded border">
-                                <label class="text-xs font-bold text-slate-500 uppercase">Or Image URL</label>
-                                <input type="text" name="imgUrl" placeholder="https://..." class="input-std mt-1">
-                            </div>
-
-                            <div class="md:col-span-12">
-                                <input type="text" name="desc" placeholder="Short Description" class="input-std" required>
-                            </div>
-                            <div class="md:col-span-12">
-                                <button type="submit" class="btn-primary w-full">Publish Project</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div id="list-projects" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
-                </div>
-
-                <div id="tab-certificates" class="tab-content hidden">
-                    <div class="glass-card p-6 mb-8">
-                        <h3 class="font-bold text-lg mb-4">Add Certificate</h3>
-                        <form onsubmit="handleCreate(event, 'certificates')" class="grid grid-cols-1 md:grid-cols-12 gap-4">
-                            <div class="md:col-span-6">
-                                <input type="text" name="title" placeholder="Certificate Name" class="input-std" required>
-                            </div>
-                            <div class="md:col-span-6">
-                                 <input type="text" name="credentialUrl" placeholder="Credential URL (Verify Link)" class="input-std">
-                            </div>
-                            <div class="md:col-span-6 bg-slate-50 p-3 rounded border">
-                                <label class="text-xs font-bold text-slate-500 uppercase">Image Upload</label>
-                                <input type="file" id="cert-file" class="w-full mt-1 text-sm">
-                            </div>
-                             <div class="md:col-span-6 bg-slate-50 p-3 rounded border">
-                                 <label class="text-xs font-bold text-slate-500 uppercase">Or Image URL</label>
-                                <input type="text" name="imgUrl" placeholder="https://..." class="input-std mt-1">
-                            </div>
-                            <div class="md:col-span-12">
-                                <input type="text" name="desc" placeholder="Description / Issuer" class="input-std" required>
-                            </div>
-                            <div class="md:col-span-12">
-                                <button type="submit" class="btn-primary w-full">Add Certificate</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div id="list-certificates" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
-                </div>
-                
-                <div id="tab-stats" class="tab-content hidden">
-                    <div class="glass-card p-6 mb-8 max-w-4xl">
-                        <h3 class="font-bold text-lg mb-4">Manage Site Counters</h3>
-                        <p class="text-sm text-slate-500 mb-6">These are the numbers displayed on the "Counter Section" of your landing page.</p>
-                        
-                        <form onsubmit="handleCreate(event, 'stats')" class="grid grid-cols-1 md:grid-cols-5 gap-4 bg-slate-100 p-4 rounded-lg mb-8">
-                            <input type="number" name="count" placeholder="Number (e.g. 100)" class="input-std" required>
-                            <input type="text" name="label" placeholder="Label (e.g. Clients)" class="input-std" required>
-                            <input type="text" name="suffix" placeholder="Suffix (e.g. + or %)" class="input-std">
-                            <input type="text" name="color" placeholder="Color Class (text-brand-accent)" class="input-std">
-                            <button type="submit" class="btn-primary">Add Counter</button>
-                        </form>
-
-                        <div id="list-stats" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+                <div id="tab-bookings" class="tab-content hidden">
+                    <div class="glass-card p-0 overflow-hidden">
+                        <div class="p-4 border-b bg-slate-50 flex justify-between items-center">
+                            <h3 class="font-bold text-brand-accent">📅 Client Booking Requests</h3>
+                            <button onclick="loadCollectionData('bookings')" class="text-sm text-brand-accent hover:underline">Refresh List</button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm">
+                                <thead class="bg-slate-100 text-slate-500 font-bold uppercase text-xs">
+                                    <tr>
+                                        <th class="p-4">Date & Time</th>
+                                        <th class="p-4">Client Name</th>
+                                        <th class="p-4">Contact Info</th>
+                                        <th class="p-4">Project Context</th>
+                                        <th class="p-4 text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="list-bookings" class="divide-y divide-slate-100">
+                                    </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
@@ -357,7 +209,6 @@
                                         <th class="p-4">Date</th>
                                         <th class="p-4">Name</th>
                                         <th class="p-4">Contact</th>
-                                        <th class="p-4">Project Type</th>
                                         <th class="p-4">Message</th>
                                         <th class="p-4 text-right">Action</th>
                                     </tr>
@@ -368,112 +219,76 @@
                     </div>
                 </div>
 
-                <div id="tab-bookings" class="tab-content hidden">
-                    <div class="glass-card p-0 overflow-hidden">
-                        <div class="p-4 border-b bg-slate-50 flex justify-between items-center">
-                            <h3 class="font-bold">Booking Requests</h3>
-                            <button onclick="loadCollectionData('bookings')" class="text-sm text-brand-accent hover:underline">Refresh</button>
-                        </div>
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left text-sm">
-                                <thead class="bg-slate-100 text-slate-500 font-bold uppercase text-xs">
-                                    <tr>
-                                        <th class="p-4">Meeting Date</th>
-                                        <th class="p-4">Time</th>
-                                        <th class="p-4">Client</th>
-                                        <th class="p-4">Contact</th>
-                                        <th class="p-4">Context</th>
-                                        <th class="p-4 text-right">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="list-bookings" class="divide-y divide-slate-100"></tbody>
-                            </table>
-                        </div>
+                <div id="tab-projects" class="tab-content hidden">
+                    <div class="glass-card p-6 mb-8">
+                        <h3 class="font-bold text-lg mb-4">Add New Project</h3>
+                        <form onsubmit="handleCreate(event, 'projects')" class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                            <div class="md:col-span-6">
+                                <input type="text" name="title" placeholder="Project Title" class="input-std" required>
+                            </div>
+                            <div class="md:col-span-3">
+                                <input type="text" name="type" placeholder="Type (e.g. SaaS)" class="input-std" required>
+                            </div>
+                            <div class="md:col-span-3">
+                                <input type="text" name="projectLink" placeholder="External URL (https://...)" class="input-std">
+                            </div>
+                            <div class="md:col-span-6 bg-slate-50 p-3 rounded border">
+                                <label class="text-xs font-bold text-slate-500 uppercase">Or Image URL</label>
+                                <input type="text" name="imgUrl" placeholder="https://..." class="input-std mt-1">
+                            </div>
+                            <div class="md:col-span-12">
+                                <input type="text" name="desc" placeholder="Short Description" class="input-std" required>
+                            </div>
+                            <div class="md:col-span-12">
+                                <button type="submit" class="btn-primary w-full">Publish Project</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="list-projects" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+                </div>
+
+                <div id="tab-stats" class="tab-content hidden">
+                    <div class="glass-card p-6 mb-8 max-w-4xl">
+                        <h3 class="font-bold text-lg mb-4">Manage Site Counters</h3>
+                        <form onsubmit="handleCreate(event, 'stats')" class="grid grid-cols-1 md:grid-cols-5 gap-4 bg-slate-100 p-4 rounded-lg mb-8">
+                            <input type="number" name="count" placeholder="Number (e.g. 100)" class="input-std" required>
+                            <input type="text" name="label" placeholder="Label (e.g. Clients)" class="input-std" required>
+                            <input type="text" name="suffix" placeholder="Suffix (e.g. + or %)" class="input-std">
+                            <input type="text" name="color" placeholder="Color Class (text-brand-accent)" class="input-std">
+                            <button type="submit" class="btn-primary">Add Counter</button>
+                        </form>
+                        <div id="list-stats" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"></div>
                     </div>
                 </div>
 
-                <div id="tab-services" class="tab-content hidden">
+                <div id="tab-certificates" class="tab-content hidden">
                     <div class="glass-card p-6 mb-8">
-                         <h3 class="font-bold text-lg mb-4">Add Strategic Solution</h3>
-                         <form onsubmit="handleCreate(event, 'services')" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <input type="text" name="title" placeholder="Service Title" class="input-std" required>
-                            <input type="text" name="icon" placeholder="Icon (fa-solid fa-code)" class="input-std" required>
-                            <input type="text" name="desc" placeholder="Description" class="input-std" required>
-                            <input type="color" name="from" value="#4f46e5" class="h-10 w-full rounded cursor-pointer">
-                            <input type="color" name="to" value="#8b5cf6" class="h-10 w-full rounded cursor-pointer">
-                            <button type="submit" class="btn-primary">Add Service</button>
-                         </form>
+                        <h3 class="font-bold text-lg mb-4">Add Certificate</h3>
+                        <form onsubmit="handleCreate(event, 'certificates')" class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                            <div class="md:col-span-6"><input type="text" name="title" placeholder="Certificate Name" class="input-std" required></div>
+                            <div class="md:col-span-6"><input type="text" name="credentialUrl" placeholder="Credential URL" class="input-std"></div>
+                            <div class="md:col-span-6"><input type="text" name="imgUrl" placeholder="Image URL" class="input-std"></div>
+                            <div class="md:col-span-6"><input type="text" name="desc" placeholder="Description / Issuer" class="input-std" required></div>
+                            <div class="md:col-span-12"><button type="submit" class="btn-primary w-full">Add Certificate</button></div>
+                        </form>
                     </div>
-                    <div id="list-services" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-                </div>
-
-                <div id="tab-experience" class="tab-content hidden">
-                    <div class="glass-card p-6 mb-8">
-                         <h3 class="font-bold text-lg mb-4">Add Journey Milestone</h3>
-                         <form onsubmit="handleCreate(event, 'experience')" class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                            <input type="text" name="year" placeholder="Year (2023-Present)" class="input-std" required>
-                            <input type="text" name="title" placeholder="Job Title" class="input-std" required>
-                            <input type="text" name="company" placeholder="Company" class="input-std" required>
-                            <input type="text" name="desc" placeholder="Description" class="input-std md:col-span-4" required>
-                            <button type="submit" class="btn-primary md:col-span-4">Add Milestone</button>
-                         </form>
-                    </div>
-                    <div id="list-experience" class="space-y-4 max-w-4xl"></div>
-                </div>
-
-                <div id="tab-skills" class="tab-content hidden">
-                    <div class="glass-card p-6 mb-8">
-                         <h3 class="font-bold text-lg mb-4">Add Skill</h3>
-                         <form onsubmit="handleCreate(event, 'skills')" class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                            <input type="text" name="name" placeholder="Name" class="input-std" required>
-                            <select name="cat" class="input-std">
-                                <option value="frontend">Frontend</option>
-                                <option value="backend">Backend</option>
-                                <option value="design">Design</option>
-                                <option value="soft">Soft Skill</option>
-                            </select>
-                            <input type="text" name="icon" placeholder="Icon Class" class="input-std" required>
-                            <button type="submit" class="btn-primary">Add Skill</button>
-                         </form>
-                    </div>
-                    <div id="list-skills" class="flex flex-wrap gap-3"></div>
+                    <div id="list-certificates" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
                 </div>
 
             </div>
         </main>
     </div>
 
-    <div id="editModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300">
-        <div class="bg-white w-full max-w-lg rounded-2xl p-6 shadow-2xl transform scale-95 transition-transform duration-300 max-h-[90vh] flex flex-col">
-            <div class="flex justify-between items-center mb-6 border-b pb-4">
-                <h3 class="text-xl font-bold text-slate-800">Edit Content</h3>
-                <button onclick="closeEditModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            
-            <form id="editForm" onsubmit="handleUpdate(event)" class="overflow-y-auto flex-1 pr-2">
-                <input type="hidden" name="docId" id="edit-docId">
-                <input type="hidden" name="collectionName" id="edit-collectionName">
-                
-                <div id="edit-fields" class="space-y-4"></div>
-                
-                <div class="mt-6 pt-4 border-t border-slate-100">
-                    <button type="submit" class="btn-primary w-full">Save Changes</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
     <div id="viewModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300">
         <div class="bg-white w-full max-w-2xl rounded-2xl p-8 shadow-2xl transform scale-95 transition-transform duration-300 max-h-[90vh] flex flex-col">
             <div class="flex justify-between items-start mb-6 border-b pb-4">
                 <div>
-                    <h3 class="text-2xl font-bold text-slate-800" id="view-title">Message Details</h3>
+                    <h3 class="text-2xl font-bold text-slate-800" id="view-title">Details</h3>
                     <p class="text-sm text-slate-500" id="view-date"></p>
                 </div>
                 <button onclick="closeViewModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <div class="overflow-y-auto flex-1 space-y-4" id="view-content">
-                </div>
+            <div class="overflow-y-auto flex-1 space-y-4" id="view-content"></div>
             <div class="mt-6 pt-4 border-t border-slate-100 flex justify-end">
                 <button onclick="closeViewModal()" class="btn-primary">Close</button>
             </div>
@@ -483,9 +298,9 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc, query, orderBy, getDoc, setDoc, getCountFromServer } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-storage.js";
+        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc, query, orderBy, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
+        // YOUR FIREBASE CONFIG
         const firebaseConfig = {
             apiKey: "AIzaSyC7dQr5Ub5LP-UUq30N6Sn7X1JB_AZFLcQ",
             authDomain: "portfalio1.firebaseapp.com",
@@ -499,28 +314,23 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
-        const storage = getStorage(app);
 
-        // --- AUTH LOGIC ---
-        const allowedEmail = "info@hiigsitech.com";
+        // --- AUTH ---
+        const allowedEmail = "info@hiigsitech.com"; // YOUR ADMIN EMAIL
         
         onAuthStateChanged(auth, (user) => {
             const loginContainer = document.getElementById('login-container');
             const dashboardContainer = document.getElementById('dashboard-container');
-
             if (user) {
                 if (user.email === allowedEmail) {
-                    // Access Granted
                     loginContainer.classList.add('hidden');
                     dashboardContainer.classList.remove('hidden');
-                    switchTab('overview');
+                    switchTab('overview'); // Start at Overview
                 } else {
-                    // Wrong Email
                     signOut(auth);
-                    alert("Access Denied: You are not authorized to view this dashboard.");
+                    alert("Not Authorized.");
                 }
             } else {
-                // Not Logged In
                 loginContainer.classList.remove('hidden');
                 dashboardContainer.classList.add('hidden');
             }
@@ -531,53 +341,20 @@
             const email = e.target.email.value;
             const password = e.target.password.value;
             const errorDiv = document.getElementById('login-error');
-            const btn = e.target.querySelector('button');
-
-            errorDiv.classList.add('hidden');
-            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Verifying...';
-
-            if (email !== allowedEmail) {
-                errorDiv.innerText = "This email is not authorized.";
-                errorDiv.classList.remove('hidden');
-                btn.innerText = "Secure Login";
-                return;
+            
+            if(email !== allowedEmail) {
+                errorDiv.innerText = "Access Denied."; errorDiv.classList.remove('hidden'); return;
             }
-
             try {
                 await signInWithEmailAndPassword(auth, email, password);
-                // onAuthStateChanged will handle the UI switch
             } catch (error) {
-                errorDiv.innerText = "Invalid credentials. Please try again.";
-                errorDiv.classList.remove('hidden');
-                btn.innerText = "Secure Login";
+                errorDiv.innerText = "Wrong Password."; errorDiv.classList.remove('hidden');
             }
         };
 
-        window.handleLogout = () => {
-            if(confirm("Are you sure you want to sign out?")) {
-                signOut(auth);
-            }
-        };
+        window.handleLogout = () => { if(confirm("Sign out?")) signOut(auth); };
 
-        // --- INIT & UTILS ---
-        document.getElementById('current-date').textContent = new Date().toLocaleDateString();
-
-        async function getFinalImageUrl(fileInputId, urlInputName, formData) {
-            const fileInput = document.getElementById(fileInputId);
-            if (fileInput && fileInput.files[0]) {
-                const file = fileInput.files[0];
-                const storageRef = ref(storage, `uploads/${Date.now()}_${file.name}`);
-                await uploadBytes(storageRef, file);
-                return await getDownloadURL(storageRef);
-            }
-            if (formData && formData.get(urlInputName)) {
-                const url = formData.get(urlInputName).trim();
-                if(url) return url;
-            }
-            return null;
-        }
-
-        // --- TABS & NAVIGATION ---
+        // --- TAB NAVIGATION ---
         window.switchTab = async (tabName) => {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
@@ -585,298 +362,152 @@
             const target = document.getElementById(`tab-${tabName}`);
             if(target) target.classList.remove('hidden');
             
-            // Activate button styling
+            // Highlight Button
             document.querySelectorAll('.nav-btn').forEach(b => {
-                if(b.innerText.toLowerCase().includes(tabName) || b.innerText.toLowerCase().includes(tabName.substring(0,4))) {
-                    b.classList.add('active');
-                }
+                if(b.innerText.toLowerCase().includes(tabName)) b.classList.add('active');
             });
 
             document.getElementById('page-title').innerText = tabName.charAt(0).toUpperCase() + tabName.slice(1);
 
-            // Fetch data based on tab
             if (tabName === 'overview') loadOverview();
-            else if (tabName === 'profile') loadProfile();
+            else if (tabName === 'bookings') loadCollectionData('bookings'); // Load Bookings
             else if (tabName === 'inbox') loadCollectionData('messages');
-            else if (tabName === 'bookings') loadCollectionData('bookings');
             else loadCollectionData(tabName);
         }
 
-        // --- DASHBOARD OVERVIEW ---
+        // --- LOAD DATA ---
         async function loadOverview() {
             try {
-                const msgColl = collection(db, "messages");
-                const bookColl = collection(db, "bookings");
-                const projColl = collection(db, "projects");
+                const msgs = await getDocs(collection(db, "messages"));
+                const books = await getDocs(collection(db, "bookings"));
                 
-                const msgs = await getDocs(msgColl);
-                const books = await getDocs(bookColl);
-                const projs = await getDocs(projColl);
-
                 document.getElementById('stat-msgs').innerText = msgs.size;
                 document.getElementById('stat-bookings').innerText = books.size;
-                document.getElementById('stat-projects').innerText = projs.size;
-                document.getElementById('stat-interactions').innerText = msgs.size + books.size; 
-
-                const activityList = document.getElementById('recent-activity-list');
-                activityList.innerHTML = '';
-                
-                const recentMsgs = query(msgColl, orderBy('timestamp', 'desc'));
-                const snap = await getDocs(recentMsgs);
-                let count = 0;
-                snap.forEach(doc => {
-                    if(count < 3) {
-                        const d = doc.data();
-                        const date = d.timestamp ? d.timestamp.toDate().toLocaleDateString() : 'N/A';
-                        activityList.innerHTML += `
-                            <div class="flex gap-3 border-b border-slate-100 pb-2 last:border-0">
-                                <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-500 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-envelope"></i></div>
-                                <div>
-                                    <p class="text-sm font-bold text-slate-800">New Message from ${d.name}</p>
-                                    <p class="text-xs text-slate-500">${date}</p>
-                                </div>
-                            </div>
-                        `;
-                        count++;
-                    }
-                });
-
-            } catch (e) { console.log("Overview error", e); }
+            } catch (e) { console.log(e); }
         }
 
-
-        // --- PROFILE ---
-        async function loadProfile() {
-            const docSnap = await getDoc(doc(db, "profile", "main"));
-            if (docSnap.exists()) {
-                const data = docSnap.data();
-                document.getElementById('profile-name').value = data.name || '';
-                document.getElementById('profile-titles').value = data.titles || '';
-                document.getElementById('profile-bio').value = data.bio || '';
-                document.getElementById('profile-url').value = data.img || '';
-                if(data.img) document.getElementById('preview-hero').src = data.img;
-            }
-        }
-        window.handleProfileSave = async (e) => {
-            e.preventDefault();
-            const btn = e.target.querySelector('button'); btn.innerText = "Saving...";
-            try {
-                const formData = new FormData(e.target);
-                const updates = Object.fromEntries(formData.entries());
-                const newImg = await getFinalImageUrl('profile-file', 'img', formData);
-                if(newImg) updates.img = newImg;
-                await setDoc(doc(db, "profile", "main"), updates, { merge: true });
-                alert("Profile saved!");
-            } catch (e) { alert(e.message); } finally { btn.innerText = "Save Profile"; }
-        };
-
-        // --- GENERIC CREATE ---
-        window.handleCreate = async (e, collectionName) => {
-            e.preventDefault();
-            const btn = e.target.querySelector('button'); 
-            const originalText = btn.innerText;
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
-            
-            try {
-                const formData = new FormData(e.target);
-                const data = Object.fromEntries(formData.entries());
-                
-                // Specific File Input Logic
-                let fileId = null;
-                if(collectionName === 'projects') fileId = 'project-file';
-                if(collectionName === 'certificates') fileId = 'cert-file';
-                
-                const finalImg = await getFinalImageUrl(fileId, 'imgUrl', formData);
-                if(finalImg) data.img = finalImg;
-
-                if(collectionName === 'messages' || collectionName === 'bookings') data.timestamp = new Date();
-
-                await addDoc(collection(db, collectionName), data);
-                e.target.reset();
-                if(fileId) document.getElementById(fileId).value = "";
-                loadCollectionData(collectionName);
-            } catch (e) { alert("Error: " + e.message); } finally { btn.innerText = originalText; }
-        };
-
-        // --- LOAD DATA LISTS ---
         async function loadCollectionData(colName) {
             const container = document.getElementById(`list-${colName}`);
-            if(!container) return;
-            container.innerHTML = '<div class="col-span-full py-10 text-center text-brand-accent"><i class="fa-solid fa-circle-notch fa-spin text-2xl"></i></div>';
-
+            container.innerHTML = '<tr><td colspan="5" class="p-4 text-center"><i class="fa-solid fa-spinner fa-spin"></i> Loading...</td></tr>';
+            
             try {
-                let q = collection(db, colName);
-                if(colName === 'messages' || colName === 'bookings') q = query(collection(db, colName), orderBy('timestamp', 'desc'));
+                let q = query(collection(db, colName), orderBy('timestamp', 'desc')); // Order by newest
+                const snapshot = await getDocs(q);
                 
-                const querySnapshot = await getDocs(q);
                 container.innerHTML = '';
-                
-                if (querySnapshot.empty) {
-                    container.innerHTML = `<div class="col-span-full text-center py-10 text-slate-400">No data found in ${colName}.</div>`;
+                if (snapshot.empty) {
+                    container.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-400">No data found.</td></tr>`;
                     return;
                 }
 
-                querySnapshot.forEach((doc) => {
+                snapshot.forEach((doc) => {
                     const html = generateCardHTML(colName, doc.data(), doc.id);
                     container.insertAdjacentHTML('beforeend', html);
                 });
-            } catch(e) { container.innerHTML = "Error loading."; console.error(e); }
+            } catch(e) { console.log(e); }
         }
 
         function generateCardHTML(type, data, id) {
             const dataStr = JSON.stringify(data).replace(/'/g, "&#39;").replace(/"/g, "&quot;");
             
-            const commonActions = `
-                <div class="absolute top-2 right-2 flex gap-1 z-20">
-                    <button onclick='window.prepareEdit("${type}", "${id}", ${dataStr})' class="bg-white/90 text-indigo-600 p-2 rounded shadow hover:bg-indigo-50"><i class="fa-solid fa-pen"></i></button>
-                    <button onclick="deleteItem('${type}', '${id}')" class="bg-white/90 text-red-500 p-2 rounded shadow hover:bg-red-50"><i class="fa-solid fa-trash"></i></button>
-                </div>
-            `;
-
-            if(type === 'projects' || type === 'certificates') {
-                const link = data.projectLink || data.credentialUrl || '#';
-                const linkText = type === 'projects' ? 'Visit Project' : 'Verify Cert';
-                const imgSrc = data.img || 'https://via.placeholder.com/400';
-                
+            // --- RENDER BOOKINGS ---
+            if(type === 'bookings') {
                 return `
-                <div class="bg-white rounded-xl shadow border border-slate-200 overflow-hidden relative group">
-                    ${commonActions}
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="${imgSrc}" class="w-full h-full object-cover transition-transform group-hover:scale-105">
-                    </div>
-                    <div class="p-5">
-                        <div class="flex justify-between items-start">
-                             <h4 class="font-bold text-lg text-slate-800 line-clamp-1">${data.title}</h4>
-                             ${type === 'projects' ? `<span class="text-xs font-bold bg-slate-100 px-2 py-1 rounded">${data.type}</span>` : ''}
-                        </div>
-                        <p class="text-sm text-slate-500 mt-2 line-clamp-2">${data.desc}</p>
-                        <div class="mt-4 pt-4 border-t border-slate-100 flex justify-between items-center">
-                            <a href="${link}" target="_blank" class="text-xs font-bold text-brand-accent uppercase hover:underline flex items-center gap-1">
-                                ${linkText} <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>`;
+                <tr class="border-b hover:bg-slate-50">
+                    <td class="p-4">
+                        <div class="font-bold text-brand-accent">${data.bookingDate || 'No Date'}</div>
+                        <div class="text-xs text-slate-500">${data.bookingTime || 'No Time'}</div>
+                    </td>
+                    <td class="p-4 font-bold">${data.name}</td>
+                    <td class="p-4 text-xs">
+                        <div>${data.email}</div>
+                        <div>${data.phone || data.fullPhone || ''}</div>
+                    </td>
+                    <td class="p-4 text-sm text-slate-600 max-w-xs truncate">${data.message || 'No details'}</td>
+                    <td class="p-4 text-right flex items-center justify-end gap-2">
+                        <button onclick='viewItem("bookings", ${dataStr})' class="text-brand-accent p-2 hover:bg-indigo-50 rounded"><i class="fa-solid fa-eye"></i></button>
+                        <button onclick="deleteItem('${type}', '${id}')" class="text-red-500 p-2 hover:bg-red-50 rounded"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>`;
             }
 
-            if(type === 'stats') {
-                return `
-                <div class="bg-white p-4 rounded-xl border border-slate-200 relative group">
-                    ${commonActions}
-                    <h3 class="text-3xl font-black ${data.color || 'text-slate-800'}">${data.count}${data.suffix||''}</h3>
-                    <p class="text-xs font-bold uppercase tracking-wider text-slate-500">${data.label}</p>
-                </div>`;
-            }
-
+            // --- RENDER MESSAGES ---
             if(type === 'messages') {
-                const date = data.timestamp ? data.timestamp.toDate().toLocaleDateString() : '-';
+                const date = data.timestamp ? new Date(data.timestamp.seconds * 1000).toLocaleDateString() : '-';
                 return `
                 <tr class="border-b hover:bg-slate-50">
                     <td class="p-4 text-xs text-slate-500">${date}</td>
-                    <td class="p-4 font-bold text-slate-800">${data.name}</td>
+                    <td class="p-4 font-bold">${data.name}</td>
                     <td class="p-4 text-xs">
-                        <div class="font-bold">${data.email}</div>
-                        <div class="text-slate-500">${data.phone || data.fullPhone || ''}</div>
+                        <div>${data.email}</div>
+                        <div>${data.phone || ''}</div>
                     </td>
-                    <td class="p-4 text-xs"><span class="bg-indigo-50 text-indigo-600 px-2 py-1 rounded font-bold">${data.type||'General'}</span></td>
-                    <td class="p-4 text-sm text-slate-600 max-w-xs truncate" title="${data.message}">${data.message}</td>
-                    <td class="p-4 text-right flex items-center justify-end gap-2">
-                        <button onclick='viewItem("messages", ${dataStr})' class="text-slate-400 hover:text-brand-accent"><i class="fa-solid fa-eye"></i></button>
-                        <button onclick="deleteItem('${type}', '${id}')" class="text-slate-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button>
-                    </td>
-                </tr>`;
-            }
-
-            if(type === 'bookings') {
-                const date = data.bookingDate || '-';
-                const time = data.bookingTime || '-';
-                return `
-                <tr class="border-b hover:bg-slate-50">
-                    <td class="p-4 text-sm font-bold text-brand-accent">${date}</td>
-                    <td class="p-4 text-sm">${time}</td>
-                    <td class="p-4 font-bold text-slate-800">${data.name}</td>
-                    <td class="p-4 text-xs text-slate-500">${data.email}<br>${data.phone||''}</td>
                     <td class="p-4 text-sm text-slate-600 max-w-xs truncate">${data.message}</td>
                     <td class="p-4 text-right flex items-center justify-end gap-2">
-                        <button onclick='viewItem("bookings", ${dataStr})' class="text-slate-400 hover:text-brand-accent"><i class="fa-solid fa-eye"></i></button>
-                        <button onclick="deleteItem('${type}', '${id}')" class="text-slate-400 hover:text-red-600"><i class="fa-solid fa-trash"></i></button>
+                        <button onclick='viewItem("messages", ${dataStr})' class="text-brand-accent p-2 hover:bg-indigo-50 rounded"><i class="fa-solid fa-eye"></i></button>
+                        <button onclick="deleteItem('${type}', '${id}')" class="text-red-500 p-2 hover:bg-red-50 rounded"><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>`;
             }
-
-            if(type === 'experience') {
+            
+            // --- RENDER PROJECTS ---
+            if(type === 'projects') {
                 return `
-                <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-col md:flex-row gap-4 relative group">
-                     ${commonActions}
-                     <div class="w-16 text-xs font-bold text-slate-400 pt-1">${data.year}</div>
-                     <div class="flex-1">
-                        <h4 class="font-bold text-lg text-slate-800">${data.title}</h4>
-                        <p class="text-brand-accent text-sm font-semibold">${data.company}</p>
-                        <p class="text-sm text-slate-600 mt-2">${data.desc}</p>
-                     </div>
+                <div class="bg-white rounded-xl shadow border border-slate-200 overflow-hidden group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="${data.img || data.imgUrl || 'https://via.placeholder.com/400'}" class="w-full h-full object-cover">
+                        <button onclick="deleteItem('${type}', '${id}')" class="absolute top-2 right-2 bg-white text-red-500 p-2 rounded shadow"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold">${data.title}</h4>
+                        <p class="text-xs text-slate-500 mt-1">${data.desc}</p>
+                    </div>
                 </div>`;
             }
             
-            // Default generic card
+            // --- RENDER STATS/CERTS ---
             return `
-            <div class="bg-white p-4 rounded-xl border border-slate-200 relative group hover:shadow-md transition-all">
-                ${commonActions}
-                <div class="flex items-center gap-3 mb-2">
-                    ${data.icon ? `<i class="${data.icon} text-lg text-slate-400"></i>` : ''}
-                    <h4 class="font-bold">${data.title || data.name}</h4>
-                </div>
-                <p class="text-xs text-slate-500">${data.desc || data.cat || ''}</p>
+            <div class="bg-white p-4 rounded-xl border border-slate-200 relative">
+                <button onclick="deleteItem('${type}', '${id}')" class="absolute top-2 right-2 text-red-500"><i class="fa-solid fa-trash"></i></button>
+                <h4 class="font-bold">${data.title || data.label || data.name}</h4>
+                <p class="text-xs text-slate-500">${data.desc || data.count || ''}</p>
             </div>`;
         }
 
         // --- DELETE ---
         window.deleteItem = async (col, id) => {
-            if(confirm("Permanently delete this item?")) {
+            if(confirm("Delete this item?")) {
                 await deleteDoc(doc(db, col, id));
                 loadCollectionData(col);
-                if(col === 'messages' || col === 'bookings') loadOverview(); // Refresh counts
             }
         }
 
-        // --- VIEW DETAILS MODAL LOGIC ---
+        // --- CREATE ---
+        window.handleCreate = async (e, col) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            await addDoc(collection(db, col), data);
+            e.target.reset();
+            loadCollectionData(col);
+        }
+
+        // --- VIEW DETAILS ---
         window.viewItem = (type, data) => {
             const modal = document.getElementById('viewModal');
-            const titleEl = document.getElementById('view-title');
-            const dateEl = document.getElementById('view-date');
-            const contentEl = document.getElementById('view-content');
-
-            titleEl.innerText = type === 'messages' ? `Message from ${data.name}` : `Booking: ${data.name}`;
-            dateEl.innerText = data.timestamp ? new Date(data.timestamp.seconds * 1000).toLocaleString() : new Date().toLocaleString();
-
-            contentEl.innerHTML = `
-                <div class="grid grid-cols-2 gap-4 mb-4 bg-slate-50 p-4 rounded-lg">
-                    <div>
-                        <span class="block text-xs font-bold uppercase text-slate-400">Email</span>
-                        <span class="text-slate-800 font-medium">${data.email}</span>
-                    </div>
-                    <div>
-                        <span class="block text-xs font-bold uppercase text-slate-400">Phone</span>
-                        <span class="text-slate-800 font-medium">${data.phone || data.fullPhone || 'N/A'}</span>
-                    </div>
-                    ${type === 'messages' ? `
-                    <div>
-                        <span class="block text-xs font-bold uppercase text-slate-400">Type</span>
-                        <span class="text-slate-800 font-medium">${data.type || 'N/A'}</span>
-                    </div>` : `
-                    <div>
-                        <span class="block text-xs font-bold uppercase text-slate-400">Meeting Time</span>
-                        <span class="text-slate-800 font-medium text-brand-accent">${data.bookingDate} @ ${data.bookingTime}</span>
-                    </div>
-                    `}
+            document.getElementById('view-title').innerText = type === 'bookings' ? 'Booking Request' : 'Message';
+            
+            document.getElementById('view-content').innerHTML = `
+                <div class="grid grid-cols-2 gap-4 bg-slate-50 p-4 rounded mb-4">
+                    <div><span class="text-xs font-bold text-slate-400 block">NAME</span> ${data.name}</div>
+                    <div><span class="text-xs font-bold text-slate-400 block">EMAIL</span> ${data.email}</div>
+                    <div><span class="text-xs font-bold text-slate-400 block">PHONE</span> ${data.phone || data.fullPhone}</div>
+                    <div><span class="text-xs font-bold text-slate-400 block">DATE</span> ${data.bookingDate || '-'}</div>
                 </div>
-                <div>
-                    <span class="block text-xs font-bold uppercase text-slate-400 mb-2">Full Message / Context</span>
-                    <div class="p-4 border rounded-lg bg-white text-slate-700 leading-relaxed">
-                        ${data.message}
-                    </div>
-                </div>
+                <div><span class="text-xs font-bold text-slate-400 block mb-2">FULL MESSAGE</span>
+                <p class="bg-white border p-4 rounded text-slate-700">${data.message}</p></div>
             `;
-
+            
             modal.classList.remove('hidden');
             setTimeout(() => modal.classList.remove('opacity-0'), 10);
         }
@@ -885,93 +516,6 @@
             const modal = document.getElementById('viewModal');
             modal.classList.add('opacity-0');
             setTimeout(() => modal.classList.add('hidden'), 300);
-        }
-
-
-        // --- EDIT MODAL LOGIC ---
-        window.prepareEdit = (col, id, data) => {
-            const modal = document.getElementById('editModal');
-            const fields = document.getElementById('edit-fields');
-            document.getElementById('edit-docId').value = id;
-            document.getElementById('edit-collectionName').value = col;
-            
-            fields.innerHTML = '';
-            
-            // 1. Create fields for existing data
-            Object.keys(data).forEach(key => {
-                // Skip internal or large objects
-                if(key !== 'timestamp' && key !== 'img' && key !== 'image') {
-                    const div = document.createElement('div');
-                    div.innerHTML = `
-                        <label class="block text-xs font-bold text-slate-500 uppercase mb-1">${key}</label>
-                        <input type="text" name="${key}" value="${data[key]}" class="input-std">
-                    `;
-                    fields.appendChild(div);
-                }
-            });
-
-            // 2. Explicitly add URL fields if they are missing but relevant to the collection type
-            if(col === 'projects' && !data.projectLink) {
-                 const div = document.createElement('div');
-                 div.innerHTML = `
-                    <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Project Link (New)</label>
-                    <input type="text" name="projectLink" placeholder="https://..." class="input-std">
-                `;
-                fields.appendChild(div);
-            }
-            if(col === 'certificates' && !data.credentialUrl) {
-                 const div = document.createElement('div');
-                 div.innerHTML = `
-                    <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Credential URL (New)</label>
-                    <input type="text" name="credentialUrl" placeholder="https://..." class="input-std">
-                `;
-                fields.appendChild(div);
-            }
-
-            // 3. Image Edit Input (if applicable)
-            if(data.img || data.image) {
-                const imgDiv = document.createElement('div');
-                imgDiv.innerHTML = `
-                    <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Update Image</label>
-                    <div class="flex items-center gap-3 mb-2">
-                        <img src="${data.img||data.image}" class="w-10 h-10 rounded object-cover border">
-                        <span class="text-xs text-slate-400">Current</span>
-                    </div>
-                    <input type="text" name="imgUrl" placeholder="New Image URL" class="input-std" value="${data.img||data.image}">
-                `;
-                fields.appendChild(imgDiv);
-            }
-
-            modal.classList.remove('hidden');
-            setTimeout(() => modal.classList.remove('opacity-0'), 10);
-        }
-
-        window.closeEditModal = () => {
-            const modal = document.getElementById('editModal');
-            modal.classList.add('opacity-0');
-            setTimeout(() => modal.classList.add('hidden'), 300);
-        }
-
-        window.handleUpdate = async (e) => {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const col = formData.get('collectionName');
-            const id = formData.get('docId');
-            
-            const updates = {};
-            for(let [k, v] of formData.entries()) {
-                if(!['docId', 'collectionName'].includes(k)) updates[k] = v;
-            }
-            
-            // Map 'imgUrl' back to 'img' if present
-            if(updates.imgUrl) {
-                updates.img = updates.imgUrl;
-                delete updates.imgUrl;
-            }
-
-            await updateDoc(doc(db, col, id), updates);
-            closeEditModal();
-            loadCollectionData(col);
         }
     </script>
 </body>
