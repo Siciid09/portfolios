@@ -6,11 +6,9 @@
     <title>Mubarik Osman | Full-Stack Engineer & Creative Strategist</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
 
     <script>
@@ -313,7 +311,7 @@
             transform: rotate(-45deg) translate(9px, -10px);
         }
 
-        /* Certificate Interactions */
+        /* Certificate Interactions & Mobile Fixes */
         .cert-card .cert-overlay {
             opacity: 1; 
             transition: all 0.4s ease-out;
@@ -332,6 +330,19 @@
             overflow: hidden;
             height: 100%;
             width: 100%;
+        }
+        /* Mobile Certificate Centering */
+        @media (max-width: 768px) {
+            .cert-card {
+                width: 85vw; /* Much wider on mobile */
+                scroll-snap-align: center;
+            }
+            #cert-track {
+                padding-left: 50vw; /* Offset for centering */
+                margin-left: -42.5vw; /* Half card width */
+            }
+            /* Hide Scrum card on mobile via CSS if class helper misses */
+            .hidden-mobile-force { display: none !important; }
         }
 
         /* --- MODERN FORM VALIDATION STYLES --- */
@@ -396,7 +407,6 @@
             border: 1px solid #ddd;
             color: #000;
         }
-        
     </style>
 </head>
 <body class="bg-brand-light dark:bg-brand-dark text-slate-800 dark:text-slate-100 overflow-x-hidden selection:bg-brand-accent selection:text-white transition-colors duration-300">
@@ -418,7 +428,7 @@
             <a href="#services" class="mobile-link hover:text-brand-accent transition-colors transform hover:scale-110" onclick="toggleMenu()">Services</a>
             <a href="#skills" class="mobile-link hover:text-brand-accent transition-colors transform hover:scale-110" onclick="toggleMenu()">Expertise</a>
             <a href="#portfolio" class="mobile-link hover:text-brand-accent transition-colors transform hover:scale-110" onclick="toggleMenu()">Projects</a>
-            <a href="#contact" class="mobile-link hover:text-brand-accent transition-colors transform hover:scale-110" onclick="toggleMenu()">Contact</a>
+            <a href="#certifications" class="mobile-link hover:text-brand-accent transition-colors transform hover:scale-110" onclick="toggleMenu()">Credentials</a> <a href="#contact" class="mobile-link hover:text-brand-accent transition-colors transform hover:scale-110" onclick="toggleMenu()">Contact</a>
         </div>
     </div>
 
@@ -430,7 +440,7 @@
 
             <div class="w-full md:w-1/3 bg-slate-50 dark:bg-black/50 p-8 border-r border-slate-200 dark:border-white/10 flex flex-col">
                 <div class="mb-6">
-                    <img id="modal-profile-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=200&q=80" alt="Mubarik" class="w-20 h-20 rounded-full mb-4 border-2 border-brand-accent object-cover">
+                    <img id="modal-profile-img" src="https://media.licdn.com/dms/image/v2/D4E03AQEQUVTQ3C73Ag/profile-displayphoto-shrink_400_400/B4EZnMVVKYHEAg-/0/1760069768422?e=1766620800&v=beta&t=ChNU3ccxs3dw8r1XCsKSaIPWoOLX4HFc14NJwqQ5y9s" alt="Mubarik" class="w-20 h-20 rounded-full mb-4 border-2 border-brand-accent object-cover">
                     <h3 class="text-xl font-bold" id="modal-profile-name">Mubarik Osman</h3>
                     <p class="text-sm text-slate-500" id="modal-tagline">Full-Stack Engineer</p>
                 </div>
@@ -447,12 +457,24 @@
             </div>
 
             <div class="w-full md:w-2/3 p-8 overflow-y-auto bg-white dark:bg-brand-cardDark relative">
+                <div id="booking-success-view" class="hidden absolute inset-0 bg-white dark:bg-brand-cardDark z-20 flex-col items-center justify-center text-center p-8 animate-fade-in-up">
+                    <div class="w-24 h-24 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-check text-4xl text-green-500"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold mb-2">Booking Confirmed!</h2>
+                    <p class="text-slate-500 mb-6">I have received your request. Check your email for details.</p>
+                    <div class="w-full bg-slate-100 dark:bg-white/10 h-1 rounded-full overflow-hidden">
+                        <div class="h-full bg-green-500 animate-[marquee_4s_linear_forwards]" style="width: 100%"></div>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-2">Closing in 4 seconds...</p>
+                </div>
+
                 <div id="calendar-view" class="transition-opacity duration-300">
                     <div class="flex justify-between items-center mb-6">
                         <h2 class="text-2xl font-bold" id="cal-month-year">Select Date</h2>
-                        <div class="flex gap-2">
-                             <button onclick="changeMonth(-1)" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-white/10"><i class="fa-solid fa-chevron-left"></i></button>
-                             <button onclick="changeMonth(1)" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-white/10"><i class="fa-solid fa-chevron-right"></i></button>
+                        <div class="flex gap-2"> 
+                            <button onclick="changeMonth(-1)" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-white/10"><i class="fa-solid fa-chevron-left"></i></button> 
+                            <button onclick="changeMonth(1)" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-white/10"><i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                     </div>
                     <div class="grid grid-cols-7 gap-2 mb-6 text-center text-sm font-bold text-slate-400">
@@ -532,8 +554,7 @@
                     <a href="#services" class="hover-target hover:text-brand-accent transition-colors text-sm font-medium">Services</a>
                     <a href="#skills" class="hover-target hover:text-brand-accent transition-colors text-sm font-medium">Expertise</a>
                     <a href="#portfolio" class="hover-target hover:text-brand-accent transition-colors text-sm font-medium">Projects</a>
-                    
-                    <button id="theme-toggle-nav" class="hover-target w-10 h-10 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center hover:bg-slate-200 transition-colors">
+                    <a href="#certifications" class="hover-target hover:text-brand-accent transition-colors text-sm font-medium">Credentials</a> <button id="theme-toggle-nav" class="hover-target w-10 h-10 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center hover:bg-slate-200 transition-colors">
                         <i class="fa-solid fa-sun text-yellow-500 hidden dark:block"></i>
                         <i class="fa-solid fa-moon text-slate-600 block dark:hidden"></i>
                     </button>
@@ -595,7 +616,7 @@
                         <div class="absolute w-80 h-80 bg-gradient-to-tr from-brand-accent to-brand-teal rounded-full opacity-20 blur-[80px]"></div>
                         
                         <div class="relative z-10 w-80 h-96 glass rounded-2xl overflow-hidden border border-white/20 rotate-3 hover:rotate-0 transition-all duration-500 shadow-2xl group hover-target">
-                            <img id="hero-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=800&q=80" alt="Mubarik Osman" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500">
+                            <img id="hero-img" src="https://media.licdn.com/dms/image/v2/D4E03AQEQUVTQ3C73Ag/profile-displayphoto-shrink_400_400/B4EZnMVVKYHEAg-/0/1760069768422?e=1766620800&v=beta&t=ChNU3ccxs3dw8r1XCsKSaIPWoOLX4HFc14NJwqQ5y9s" alt="Mubarik Osman" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500">
                             <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black to-transparent">
                                 <p id="hero-card-name" class="text-white font-bold text-lg">Mubarik Osman</p>
                                 <p class="text-xs text-gray-300">Engineer & Strategist</p>
@@ -608,7 +629,6 @@
                 </div>
             </div>
         </section>
-
         <section id="services" class="py-24 relative z-10 border-t border-slate-200 dark:border-white/5">
              <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-16" data-aos="fade-up">
@@ -650,15 +670,15 @@
                     <p class="text-slate-500 max-w-2xl mx-auto">A comprehensive toolkit allowing for total control over the development lifecycle.</p>
                 </div>
 
-                <div class="flex flex-wrap justify-center gap-4 mb-12" data-aos="fade-up">
-                    <button class="filter-btn active px-6 py-2 rounded-full border border-brand-accent bg-brand-accent text-white font-bold text-sm transition-all" data-filter="all">All</button>
-                    <button class="filter-btn px-6 py-2 rounded-full border border-slate-200 dark:border-white/10 hover:border-brand-accent hover:text-brand-accent font-bold text-sm transition-all" data-filter="soft">Management & Soft Skills</button>
-                    <button class="filter-btn px-6 py-2 rounded-full border border-slate-200 dark:border-white/10 hover:border-brand-accent hover:text-brand-accent font-bold text-sm transition-all" data-filter="design">Design & Strategy</button>
-                    <button class="filter-btn px-6 py-2 rounded-full border border-slate-200 dark:border-white/10 hover:border-brand-accent hover:text-brand-accent font-bold text-sm transition-all" data-filter="backend">Backend</button>
-                    <button class="filter-btn px-6 py-2 rounded-full border border-slate-200 dark:border-white/10 hover:border-brand-accent hover:text-brand-accent font-bold text-sm transition-all" data-filter="frontend">Frontend</button>
+                <div class="flex flex-wrap justify-center gap-1 md:gap-4 mb-12" data-aos="fade-up">
+                    <button class="filter-btn active px-3 py-1 text-xs m-0.5 md:px-6 md:py-2 md:text-sm md:m-0 rounded-full border border-brand-accent bg-brand-accent text-white font-bold transition-all" data-filter="all">All</button>
+                    <button class="filter-btn px-3 py-1 text-xs m-0.5 md:px-6 md:py-2 md:text-sm md:m-0 rounded-full border border-slate-200 dark:border-white/10 hover:border-brand-accent hover:text-brand-accent font-bold transition-all" data-filter="soft">Management</button>
+                    <button class="filter-btn px-3 py-1 text-xs m-0.5 md:px-6 md:py-2 md:text-sm md:m-0 rounded-full border border-slate-200 dark:border-white/10 hover:border-brand-accent hover:text-brand-accent font-bold transition-all" data-filter="design">Design & Strategy</button>
+                    <button class="filter-btn px-3 py-1 text-xs m-0.5 md:px-6 md:py-2 md:text-sm md:m-0 rounded-full border border-slate-200 dark:border-white/10 hover:border-brand-accent hover:text-brand-accent font-bold transition-all" data-filter="backend">Backend</button>
+                    <button class="filter-btn px-3 py-1 text-xs m-0.5 md:px-6 md:py-2 md:text-sm md:m-0 rounded-full border border-slate-200 dark:border-white/10 hover:border-brand-accent hover:text-brand-accent font-bold transition-all" data-filter="frontend">Frontend</button>
                 </div>
                 
-                <div class="flex flex-wrap justify-center gap-3 md:gap-4" data-aos="fade-up" id="skills-container">
+                <div class="flex flex-wrap justify-center gap-2 md:gap-4" data-aos="fade-up" id="skills-container">
                     </div>
 
                 <div class="mt-16 glass p-8 rounded-3xl border border-white/10 overflow-hidden" data-aos="zoom-in">
@@ -692,11 +712,21 @@
 
         <section id="portfolio" class="py-24 bg-slate-50 dark:bg-brand-gray/20 relative z-10 overflow-hidden">
             <div class="max-w-7xl mx-auto px-4">
-                <div class="flex flex-col md:flex-row justify-center md:justify-between items-center mb-12 text-center md:text-left" data-aos="fade-up">
+                <div class="flex flex-col md:flex-row justify-center md:justify-between items-center mb-8 text-center md:text-left" data-aos="fade-up">
                     <div>
                         <h2 class="text-4xl md:text-5xl font-bold"><span class="bg-black text-white px-3 py-1 rounded">Featured</span> <span class="text-brand-accent">Projects</span></h2>
                         <p class="text-slate-500 mt-2">Scalable solutions deployed for real-world impact.</p>
                     </div>
+                </div>
+
+                <div class="flex md:hidden justify-center items-center gap-4 mb-6">
+                     <button onclick="prevProject()" class="w-10 h-10 rounded-full border border-slate-300 dark:border-white/20 hover:bg-brand-accent hover:text-white transition-all flex items-center justify-center">
+                         <i class="fa-solid fa-chevron-left"></i>
+                     </button>
+                     <span class="text-xs uppercase tracking-widest text-slate-400 font-bold">Explore</span>
+                     <button onclick="nextProject()" class="w-10 h-10 rounded-full border border-slate-300 dark:border-white/20 hover:bg-brand-accent hover:text-white transition-all flex items-center justify-center">
+                         <i class="fa-solid fa-chevron-right"></i>
+                     </button>
                 </div>
 
                 <div class="relative group-carousel">
@@ -709,7 +739,7 @@
                 <div class="flex justify-center mt-8 gap-2" id="project-dots">
                     </div>
 
-                <div class="flex justify-center items-center gap-4 mt-8">
+                <div class="hidden md:flex justify-center items-center gap-4 mt-8">
                      <button onclick="prevProject()" class="w-12 h-12 rounded-full border border-slate-300 dark:border-white/20 hover:bg-brand-accent hover:text-white hover:border-brand-accent transition-all flex items-center justify-center text-slate-500 dark:text-slate-300">
                          <i class="fa-solid fa-chevron-left"></i>
                      </button>
@@ -733,72 +763,83 @@
             <div class="space-orb w-32 h-32 bg-teal-400 top-1/2 left-1/2"></div>
             
             <div class="max-w-7xl mx-auto px-4 relative z-20">
-                <div class="glass border border-white/20 rounded-3xl p-10 md:p-16 text-center shadow-2xl bg-black/40 backdrop-blur-xl">
+                <div class="glass border border-white/20 rounded-3xl p-6 md:p-16 text-center shadow-2xl bg-black/40 backdrop-blur-xl">
                     <i class="fa-solid fa-medal text-5xl text-yellow-500 mb-6 animate-pulse"></i>
                     <h2 class="text-3xl md:text-4xl font-bold mb-4">Recognized by Industry Giants</h2>
                     <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-10">
                         Certified expertise validated by the leaders of the web.
                     </p>
-                    <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                        <div class="bg-white/10 p-6 rounded-xl border border-white/10 hover:border-brand-accent hover:bg-white/20 transition-all duration-300 group hover-target transform hover:-translate-y-2">
-                            <i class="fa-brands fa-google text-3xl mb-3 text-white group-hover:scale-125 transition-transform duration-300"></i>
-                            <h4 class="font-bold text-sm">Google</h4>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+                        <div class="bg-white/10 p-4 md:p-6 rounded-xl border border-white/10 hover:border-brand-accent hover:bg-white/20 transition-all duration-300 group hover-target transform hover:-translate-y-2 h-32 md:h-auto flex flex-col justify-between items-center md:block">
+                            <i class="fa-brands fa-google text-5xl md:text-3xl mb-0 md:mb-3 text-white group-hover:scale-125 transition-transform duration-300"></i>
+                            <h4 class="font-bold text-base md:text-sm mx-auto">Google</h4>
                         </div>
-                        <div class="bg-white/10 p-6 rounded-xl border border-white/10 hover:border-brand-accent hover:bg-white/20 transition-all duration-300 group hover-target transform hover:-translate-y-2">
-                            <i class="fa-brands fa-meta text-3xl mb-3 text-blue-400 group-hover:scale-125 transition-transform duration-300"></i>
-                            <h4 class="font-bold text-sm">Meta</h4>
+                        <div class="bg-white/10 p-4 md:p-6 rounded-xl border border-white/10 hover:border-brand-accent hover:bg-white/20 transition-all duration-300 group hover-target transform hover:-translate-y-2 h-32 md:h-auto flex flex-col justify-between items-center md:block">
+                            <i class="fa-brands fa-meta text-5xl md:text-3xl mb-0 md:mb-3 text-blue-400 group-hover:scale-125 transition-transform duration-300"></i>
+                            <h4 class="font-bold text-base md:text-sm mx-auto">Meta</h4>
                         </div>
-                        <div class="bg-white/10 p-6 rounded-xl border border-white/10 hover:border-brand-accent hover:bg-white/20 transition-all duration-300 group hover-target transform hover:-translate-y-2">
-                            <i class="fa-brands fa-microsoft text-3xl mb-3 text-blue-500 group-hover:scale-125 transition-transform duration-300"></i>
-                            <h4 class="font-bold text-sm">Microsoft</h4>
+                        <div class="bg-white/10 p-4 md:p-6 rounded-xl border border-white/10 hover:border-brand-accent hover:bg-white/20 transition-all duration-300 group hover-target transform hover:-translate-y-2 h-32 md:h-auto flex flex-col justify-between items-center md:block">
+                            <i class="fa-brands fa-microsoft text-5xl md:text-3xl mb-0 md:mb-3 text-blue-500 group-hover:scale-125 transition-transform duration-300"></i>
+                            <h4 class="font-bold text-base md:text-sm mx-auto">Microsoft</h4>
                         </div>
-                        <div class="bg-white/10 p-6 rounded-xl border border-white/10 hover:border-brand-accent hover:bg-white/20 transition-all duration-300 group hover-target transform hover:-translate-y-2">
-                            <i class="fa-brands fa-aws text-3xl mb-3 text-orange-500 group-hover:scale-125 transition-transform duration-300"></i>
-                            <h4 class="font-bold text-sm">AWS</h4>
+                        <div class="bg-white/10 p-4 md:p-6 rounded-xl border border-white/10 hover:border-brand-accent hover:bg-white/20 transition-all duration-300 group hover-target transform hover:-translate-y-2 h-32 md:h-auto flex flex-col justify-between items-center md:block">
+                            <i class="fa-brands fa-aws text-5xl md:text-3xl mb-0 md:mb-3 text-orange-500 group-hover:scale-125 transition-transform duration-300"></i>
+                            <h4 class="font-bold text-base md:text-sm mx-auto">AWS</h4>
                         </div>
-                         <div class="bg-white/10 p-6 rounded-xl border border-white/10 hover:border-brand-accent hover:bg-white/20 transition-all duration-300 group hover-target transform hover:-translate-y-2">
-                            <i class="fa-solid fa-database text-3xl mb-3 text-red-500 group-hover:scale-125 transition-transform duration-300"></i>
-                            <h4 class="font-bold text-sm">Oracle</h4>
+                         <div class="bg-white/10 p-4 md:p-6 rounded-xl border border-white/10 hover:border-brand-accent hover:bg-white/20 transition-all duration-300 group hover-target transform hover:-translate-y-2 h-32 md:h-auto flex flex-col justify-between items-center md:block">
+                            <i class="fa-solid fa-database text-5xl md:text-3xl mb-0 md:mb-3 text-red-500 group-hover:scale-125 transition-transform duration-300"></i>
+                            <h4 class="font-bold text-base md:text-sm mx-auto">Oracle</h4>
                         </div>
-                        <div class="bg-white/10 p-6 rounded-xl border border-white/10 hover:border-brand-accent hover:bg-white/20 transition-all duration-300 group hover-target transform hover:-translate-y-2">
-                            <i class="fa-solid fa-network-wired text-3xl mb-3 text-blue-300 group-hover:scale-125 transition-transform duration-300"></i>
-                            <h4 class="font-bold text-sm">Cisco</h4>
+                        <div class="bg-white/10 p-4 md:p-6 rounded-xl border border-white/10 hover:border-brand-accent hover:bg-white/20 transition-all duration-300 group hover-target transform hover:-translate-y-2 h-32 md:h-auto flex flex-col justify-between items-center md:block">
+                            <i class="fa-solid fa-network-wired text-5xl md:text-3xl mb-0 md:mb-3 text-blue-300 group-hover:scale-125 transition-transform duration-300"></i>
+                            <h4 class="font-bold text-base md:text-sm mx-auto">Cisco</h4>
                         </div>
-                        <div class="bg-white/10 p-6 rounded-xl border border-white/10 hover:border-brand-accent hover:bg-white/20 transition-all duration-300 group hover-target transform hover:-translate-y-2">
-                            <i class="fa-brands fa-hubspot text-3xl mb-3 text-orange-600 group-hover:scale-125 transition-transform duration-300"></i>
-                            <h4 class="font-bold text-sm">HubSpot</h4>
+                        <div class="bg-white/10 p-4 md:p-6 rounded-xl border border-white/10 hover:border-brand-accent hover:bg-white/20 transition-all duration-300 group hover-target transform hover:-translate-y-2 h-32 md:h-auto flex flex-col justify-between items-center md:block">
+                            <i class="fa-brands fa-hubspot text-5xl md:text-3xl mb-0 md:mb-3 text-orange-600 group-hover:scale-125 transition-transform duration-300"></i>
+                            <h4 class="font-bold text-base md:text-sm mx-auto">HubSpot</h4>
                         </div>
-                        <div class="bg-white/10 p-6 rounded-xl border border-white/10 hover:border-brand-accent hover:bg-white/20 transition-all duration-300 group hover-target transform hover:-translate-y-2">
-                            <i class="fa-brands fa-linkedin text-3xl mb-3 text-blue-600 group-hover:scale-125 transition-transform duration-300"></i>
-                            <h4 class="font-bold text-sm">LinkedIn</h4>
+                        <div class="bg-white/10 p-4 md:p-6 rounded-xl border border-white/10 hover:border-brand-accent hover:bg-white/20 transition-all duration-300 group hover-target transform hover:-translate-y-2 h-32 md:h-auto flex flex-col justify-between items-center md:block">
+                            <i class="fa-brands fa-linkedin text-5xl md:text-3xl mb-0 md:mb-3 text-blue-600 group-hover:scale-125 transition-transform duration-300"></i>
+                            <h4 class="font-bold text-base md:text-sm mx-auto">LinkedIn</h4>
                         </div>
-                        <div class="bg-white/10 p-6 rounded-xl border border-white/10 hover:border-brand-accent hover:bg-white/20 transition-all duration-300 group hover-target transform hover:-translate-y-2">
-                            <i class="fa-solid fa-graduation-cap text-3xl mb-3 text-white group-hover:scale-125 transition-transform duration-300"></i>
-                            <h4 class="font-bold text-sm">MITx</h4>
+                        <div class="bg-white/10 p-4 md:p-6 rounded-xl border border-white/10 hover:border-brand-accent hover:bg-white/20 transition-all duration-300 group hover-target transform hover:-translate-y-2 h-32 md:h-auto flex flex-col justify-between items-center md:block">
+                            <i class="fa-solid fa-graduation-cap text-5xl md:text-3xl mb-0 md:mb-3 text-white group-hover:scale-125 transition-transform duration-300"></i>
+                            <h4 class="font-bold text-base md:text-sm mx-auto">MITx</h4>
                         </div>
-                        <div class="bg-white/10 p-6 rounded-xl border border-white/10 hover:border-brand-accent hover:bg-white/20 transition-all duration-300 group hover-target transform hover:-translate-y-2">
-                            <i class="fa-solid fa-people-group text-3xl mb-3 text-green-400 group-hover:scale-125 transition-transform duration-300"></i>
-                            <h4 class="font-bold text-sm">Scrum</h4>
+                        <div class="bg-white/10 p-4 md:p-6 rounded-xl border border-white/10 hover:border-brand-accent hover:bg-white/20 transition-all duration-300 group hover-target transform hover:-translate-y-2 h-32 md:h-auto hidden md:flex flex-col justify-between items-center">
+                            <i class="fa-solid fa-people-group text-5xl md:text-3xl mb-0 md:mb-3 text-green-400 group-hover:scale-125 transition-transform duration-300"></i>
+                            <h4 class="font-bold text-base md:text-sm mx-auto">Scrum</h4>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-24 relative z-10 overflow-hidden">
+        <section id="certifications" class="py-24 relative z-10 overflow-hidden">
             <div class="max-w-7xl mx-auto px-4">
-                <div class="text-center mb-12">
+                <div class="text-center mb-8">
                     <h2 class="text-3xl font-bold">Verified <span class="text-brand-accent">Certificates</span></h2>
                 </div>
                 
+                <div class="flex md:hidden justify-center items-center gap-4 mb-8">
+                      <button onclick="scrollCerts('left')" class="w-10 h-10 rounded-full border border-slate-300 dark:border-white/20 hover:bg-brand-accent hover:text-white transition-all flex items-center justify-center">
+                          <i class="fa-solid fa-chevron-left"></i>
+                      </button>
+                      <span class="text-xs uppercase tracking-widest text-slate-400 font-bold">Scroll</span>
+                      <button onclick="scrollCerts('right')" class="w-10 h-10 rounded-full border border-slate-300 dark:border-white/20 hover:bg-brand-accent hover:text-white transition-all flex items-center justify-center">
+                          <i class="fa-solid fa-chevron-right"></i>
+                      </button>
+                </div>
+
                 <div class="relative group" id="cert-container-wrapper">
-                    <div class="flex overflow-x-auto overflow-y-hidden md:overflow-hidden pb-4 md:pb-0 hide-scrollbar" id="cert-scroller">
-                         <div id="cert-track" class="flex gap-8 w-max pl-4 md:pl-0 transition-transform duration-[500ms] ease-in-out">
+                    <div class="flex overflow-x-auto overflow-y-hidden md:overflow-hidden pb-4 md:pb-0 hide-scrollbar snap-x snap-mandatory" id="cert-scroller">
+                         <div id="cert-track" class="flex gap-4 md:gap-8 w-max pl-4 md:pl-0 transition-transform duration-[500ms] ease-in-out">
                             </div>
                     </div>
                 </div>
 
-                <div class="flex justify-center items-center gap-4 mt-12">
+                <div class="hidden md:flex justify-center items-center gap-4 mt-12">
                       <button onclick="scrollCerts('left')" class="w-12 h-12 rounded-full border border-slate-300 dark:border-white/20 hover:bg-brand-accent hover:text-white hover:border-brand-accent transition-all flex items-center justify-center text-slate-500 dark:text-slate-300">
                           <i class="fa-solid fa-chevron-left"></i>
                       </button>
@@ -815,7 +856,6 @@
                 </div>
             </div>
         </section>
-
         <section class="py-24 relative z-10 overflow-hidden group perspective-1000">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="flex flex-col md:flex-row gap-16 items-center">
@@ -946,6 +986,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="flex justify-center mt-8 gap-2">
                     <button class="w-3 h-3 rounded-full bg-brand-accent transition-all hover:scale-125 slider-dot" onclick="moveCarousel(0)"></button>
                     <button class="w-3 h-3 rounded-full bg-slate-300 dark:bg-white/20 transition-all hover:scale-125 slider-dot" onclick="moveCarousel(1)"></button>
@@ -1031,7 +1072,8 @@
                             <textarea name="message" required class="hover-target w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white placeholder-gray-400 focus:bg-white/10 focus:border-brand-accent focus:outline-none transition-all h-40 resize-none peer" placeholder="Faahfaahin (Tell me about your vision...)"></textarea>
                             <p class="error-msg text-red-400 text-sm mt-2 font-bold"><i class="fa-solid fa-circle-exclamation mr-1"></i> Message cannot be empty</p>
                         </div>
-                        <button type="submit" class="hover-target w-full bg-gradient-to-r from-brand-accent to-brand-glow text-white font-black text-xl py-6 rounded-2xl hover:scale-[1.02] active:scale-95 transition-all shadow-lg hover:shadow-indigo-500/50 uppercase">
+                        
+                        <button type="submit" class="hover-target w-full bg-gradient-to-r from-brand-accent to-brand-glow text-white font-black text-sm py-4 md:text-xl md:py-6 rounded-2xl hover:scale-[1.02] active:scale-95 transition-all shadow-lg hover:shadow-indigo-500/50 uppercase">
                             SEND MESSAGE & START <i class="fa-solid fa-paper-plane ml-2"></i>
                         </button>
                     </form>
@@ -1060,7 +1102,7 @@
                 </div>
                 
                 <div class="text-center w-full">
-                    <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">info@hiigsitech.com</p>
+                    <p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0d64636b624d6564646a7e6479686e65236e6260">[email&#160;protected]</a></p>
                     <p class="text-xs font-bold uppercase tracking-widest text-slate-500">+252 63 3227084</p>
                 </div>
 
@@ -1071,11 +1113,31 @@
         </div>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"></script>
     
     <script type="module">
+        // --- 1. DOMAIN PROTECTION SCRIPT ---
+        (function() {
+            const allowedDomains = [
+                "garaadbiixi.com", 
+                "portfolio.hiigsitech.com", 
+                "mubarikosman.com",
+                "www.garaadbiixi.com",
+                "www.portfolio.hiigsitech.com",
+                "www.mubarikosman.com",
+                "127.0.0.1", // Allowed for testing
+                "localhost"  // Allowed for testing
+            ];
+            
+            // Check if current hostname is in the allowed list
+            if (!allowedDomains.includes(window.location.hostname)) {
+                 // Redirect to specific URL to prevent copying
+                 window.location.href = "https://mubarikosman.com";
+            }
+        })();
+
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
         import { getFirestore, collection, getDocs, addDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
@@ -1188,8 +1250,8 @@
         };
 
         // --- HELPER FUNCTIONS ---
-        // Handles image logic: DB Link OR Local Path OR Fallback
-        const getImage = (item) => item.image || item.localPath || item.img || 'https://via.placeholder.com/800';
+        // Handles image logic: DB Link OR Local Path OR Fallback with your LinkedIn IMG
+        const getImage = (item) => item.image || item.localPath || item.img || 'https://media.licdn.com/dms/image/v2/D4E03AQEQUVTQ3C73Ag/profile-displayphoto-shrink_400_400/B4EZnMVVKYHEAg-/0/1760069768422?e=1766620800&v=beta&t=ChNU3ccxs3dw8r1XCsKSaIPWoOLX4HFc14NJwqQ5y9s';
 
         // Helper: Create Modern Shimmer Skeletons
         function injectSkeletons(containerId, count, type) {
@@ -1254,6 +1316,9 @@
                 const docRef = doc(db, "profile", "main");
                 const docSnap = await getDoc(docRef);
                 
+                // Fallback Image
+                const fallbackImg = "https://media.licdn.com/dms/image/v2/D4E03AQEQUVTQ3C73Ag/profile-displayphoto-shrink_400_400/B4EZnMVVKYHEAg-/0/1760069768422?e=1766620800&v=beta&t=ChNU3ccxs3dw8r1XCsKSaIPWoOLX4HFc14NJwqQ5y9s";
+
                 if (docSnap.exists()) {
                     const data = docSnap.data();
                     
@@ -1265,13 +1330,12 @@
                         if(modalName) modalName.textContent = data.name;
                     }
 
-                    if(data.img) {
-                        const heroImg = document.getElementById('hero-img');
-                        if(heroImg) heroImg.src = data.img;
-                        
-                        const modalImg = document.getElementById('modal-profile-img');
-                        if(modalImg) modalImg.src = data.img;
-                    }
+                    // Use updated image logic
+                    const imgSrc = data.img || fallbackImg;
+                    const heroImg = document.getElementById('hero-img');
+                    if(heroImg) heroImg.src = imgSrc;
+                    const modalImg = document.getElementById('modal-profile-img');
+                    if(modalImg) modalImg.src = imgSrc;
 
                     if(data.bio) {
                         const heroBio = document.getElementById('hero-bio');
@@ -1290,9 +1354,7 @@
             }
         }
 
-
         // --- RENDERERS ---
-
         // 1. Services
         async function renderServices() {
             injectSkeletons('services-container', 4, 'card'); // Show modern skeleton
@@ -1364,7 +1426,7 @@
             const data = await fetchOrFallback('skills', 'skills');
             const container = document.getElementById('skills-container');
             container.innerHTML = data.map(item => `
-                <span class="skill-tag px-6 py-3 glass rounded-full border border-slate-200 dark:border-white/10 text-sm font-bold flex items-center gap-2" data-category="${item.cat}">
+                <span class="skill-tag px-3 py-1.5 md:px-6 md:py-3 glass rounded-full border border-slate-200 dark:border-white/10 text-xs md:text-sm font-bold flex items-center gap-2" data-category="${item.cat}">
                     <i class="${item.icon} ${item.color}"></i> ${item.name}
                 </span>
             `).join('');
@@ -1398,7 +1460,6 @@
 
         async function renderProjects() {
             injectSkeletons('project-track', 2, 'project'); 
-            
             projectsData = await fetchOrFallback('projects', 'projects');
             const track = document.getElementById('project-track');
             const dotsContainer = document.getElementById('project-dots');
@@ -1489,7 +1550,7 @@
             const data = await fetchOrFallback('certificates', 'certificates');
             const track = document.getElementById('cert-track');
             const createCard = (item) => `
-                <div class="cert-card w-[300px] md:w-[400px] h-[350px] rounded-2xl overflow-hidden relative group/card cursor-pointer shadow-lg bg-black flex-shrink-0">
+                <div class="cert-card w-[85vw] md:w-[400px] h-[350px] rounded-2xl overflow-hidden relative group/card cursor-pointer shadow-lg bg-black flex-shrink-0 snap-center">
                     <div class="cert-image-wrapper"><img src="${getImage(item)}" alt="${item.title}" class="cert-scrolling-image"></div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent flex flex-col justify-end p-6">
                         <h4 class="text-white font-bold text-xl mb-1 relative z-20">${item.title}</h4>
@@ -1499,7 +1560,8 @@
                 </div>`;
             const duplicatedData = [...data, ...data, ...data];
             track.innerHTML = duplicatedData.map((item, i) => `
-                <div class="flex flex-col items-center gap-6 mx-4 group/wrapper">${createCard(item)}
+                <div class="flex flex-col items-center gap-6 mx-0 md:mx-4 group/wrapper snap-center">
+                    ${createCard(item)}
                     <div class="relative flex flex-col items-center">
                         <div class="h-8 w-px bg-gradient-to-b from-brand-accent to-transparent opacity-50 mb-2"></div>
                         <span class="text-6xl font-black text-slate-300 dark:text-white/80 transition-all group-hover/wrapper:text-brand-accent font-sans select-none">${((i % data.length) + 1).toString().padStart(2, '0')}</span>
@@ -1521,7 +1583,10 @@
                 setTimeout(() => { startCertAutoScroll(); }, 2000); // Wait 2s then resume
             }
 
-            const scrollAmount = 350; 
+            // Adjust scroll amount for mobile vs desktop
+            const isMobile = window.innerWidth < 768;
+            const scrollAmount = isMobile ? window.innerWidth * 0.85 + 16 : 350; 
+            
             if(direction === 'left') {
                 scroller.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
             } else {
@@ -1626,7 +1691,7 @@
             const firstDay = new Date(year, month, 1).getDay(); 
             const offset = firstDay === 0 ? 6 : firstDay - 1; 
             
-            for(let i=0; i<offset; i++) {
+            for(let i=0; i<offset; i++) { 
                  daysContainer.innerHTML += `<span class="aspect-square"></span>`;
             }
             
@@ -1643,19 +1708,19 @@
                 if(thisDate < new Date(today.setHours(0,0,0,0))) {
                     btn.classList.add("text-slate-300", "cursor-not-allowed");
                     btn.disabled = true;
-                } else {
-                     if(selectedDate && thisDate.toDateString() === selectedDate.toDateString()) {
-                         btn.classList.add("bg-brand-accent", "text-white");
-                     } else {
-                         btn.classList.add("hover:bg-slate-100", "dark:hover:bg-white/10", "text-slate-600", "dark:text-slate-300");
-                     }
-                     btn.onclick = () => {
-                         selectedDate = thisDate;
-                         document.getElementById('booking-date-input').value = thisDate.toDateString();
-                         document.getElementById('time-slots').classList.remove('hidden');
+                } else { 
+                     if(selectedDate && thisDate.toDateString() === selectedDate.toDateString()) { 
+                         btn.classList.add("bg-brand-accent", "text-white"); 
+                     } else { 
+                         btn.classList.add("hover:bg-slate-100", "dark:hover:bg-white/10", "text-slate-600", "dark:text-slate-300"); 
+                     } 
+                     btn.onclick = () => { 
+                         selectedDate = thisDate; 
+                         document.getElementById('booking-date-input').value = thisDate.toDateString(); 
+                         document.getElementById('time-slots').classList.remove('hidden'); 
                          loadBookingTimes(); 
-                         renderCalendar(); 
-                     };
+                          renderCalendar(); 
+                      };
                 }
                 daysContainer.appendChild(btn);
             }
@@ -1748,13 +1813,30 @@
 
             try {
                 await addDoc(collection(db, "bookings"), data);
-                alert("Booking Confirmed! See you then.");
+                
+                // Show Success View Timer Logic
+                document.getElementById('form-view').classList.add('hidden');
+                const successView = document.getElementById('booking-success-view');
+                successView.classList.remove('hidden');
+                
                 e.target.reset();
                 e.target.classList.remove('form-submitted');
-                toggleModal(); 
+
+                // 4 Second Timer to close
+                setTimeout(() => {
+                    successView.classList.add('hidden');
+                    toggleModal();
+                    // Reset modal state after close
+                    setTimeout(() => {
+                        showCalendar();
+                        document.getElementById('cal-continue-btn').disabled = true;
+                    }, 500);
+                }, 4000);
+
             } catch (error) {
                 console.error("Error booking: ", error);
                 alert("Booking failed. Please try again.");
+                document.getElementById('form-view').classList.remove('hidden'); // Show form again on error
             } finally {
                 btn.innerHTML = originalText;
                 btn.disabled = false;
@@ -1763,7 +1845,6 @@
 
         document.getElementById('main-contact-form').addEventListener('submit', handleFormSubmit);
         document.getElementById('modal-contact-form').addEventListener('submit', handleBookingSubmit);
-
 
         // --- INIT SCRIPT ---
         
@@ -1795,7 +1876,7 @@
             renderSkills();
             renderProjects();
             renderCertificates();
-            // renderSocials(); // Removed as we use hardcoded HTML for new section
+            // renderSocials(); // Removed as we use hardcoded HTML
             renderCalendar(); 
 
             // Init Heatmap
@@ -1834,10 +1915,11 @@
             }
             // Auto slide testimonials
             setInterval(() => {
-                const maxGroups = window.innerWidth < 768 ? 6 : 2;
+                // Modified for better mobile logic
+                const maxGroups = 2; // Since we structured HTML in 2 groups, we keep 2 for now.
                 currentGroup = (currentGroup + 1) % maxGroups; 
                 if(window.moveCarousel) window.moveCarousel(currentGroup);
-            }, 5000);
+            }, 6000); // Slower timer (6s) to allow reading
         });
 
         const htmlElement = document.documentElement;
@@ -1912,5 +1994,6 @@
             });
         }
     </script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"8dd49ca01f9947dca5dfbd7225476b53","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
