@@ -1311,6 +1311,7 @@
         }
 
         // --- 0. RENDER PROFILE ---
+   // --- 0. RENDER PROFILE ---
         async function renderProfile() {
             try {
                 const docRef = doc(db, "profile", "main");
@@ -1330,12 +1331,13 @@
                         if(modalName) modalName.textContent = data.name;
                     }
 
-                    // Use updated image logic
-                    const imgSrc = data.img || fallbackImg;
-                    const heroImg = document.getElementById('hero-img');
-                    if(heroImg) heroImg.src = imgSrc;
-                    const modalImg = document.getElementById('modal-profile-img');
-                    if(modalImg) modalImg.src = imgSrc;
+                    // --- I COMMENTED THIS OUT SO IT DOES NOT OVERWRITE YOUR HARDCODED IMAGE ---
+                    // const imgSrc = data.img || fallbackImg;
+                    // const heroImg = document.getElementById('hero-img');
+                    // if(heroImg) heroImg.src = imgSrc;
+                    // const modalImg = document.getElementById('modal-profile-img');
+                    // if(modalImg) modalImg.src = imgSrc;
+                    // -------------------------------------------------------------------------
 
                     if(data.bio) {
                         const heroBio = document.getElementById('hero-bio');
